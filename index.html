@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Научу вашего ребёнка учиться самостоятельно — [Имя]</title>
+  <meta name="description" content="Программа из 5 занятий: самостоятельное обучение, математика, программирование и работа с нейросетями. 5 занятий — и ребёнок научится учиться сам. Запишитесь на пробное занятие.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Научу вашего ребёнка учиться самостоятельно — [Имя]" />
+  <meta property="og:description" content="Программа из 5 занятий: самостоятельное обучение, математика, программирование и работа с нейросетями." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://picsum.photos/seed/og/1200/630" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // configure Tailwind (optional extension)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlue: '#3B82F6',
+            brandGreen: '#10B981'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* small extra styling for smoother carousel transitions */
+    .carousel-slide { transition: transform .45s ease, opacity .45s ease; }
+  </style>
+</head>
+<body class="antialiased text-gray-800 bg-white">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <a href="#" class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-md bg-[url('https://picsum.photos/seed/logo/80/80')] bg-cover bg-center shadow-sm"></div>
+            <span class="font-semibold text-lg">[Имя]</span>
+          </a>
+        </div>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#program" class="hover:text-brandBlue">О программе</a>
+          <a href="#format" class="hover:text-brandBlue">Формат</a>
+          <a href="#reviews" class="hover:text-brandBlue">Отзывы</a>
+          <a href="#contacts" class="hover:text-brandBlue">Контакты</a>
+          <a href="#contacts" class="ml-4 inline-flex items-center px-4 py-2 rounded-md text-white bg-[var(--brandBlue,#3B82F6)] hover:opacity-95" style="background-color:#3B82F6">Записаться</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobileMenuBtn" aria-label="Открыть меню" class="p-2 rounded-md ring-1 ring-gray-200">
+            <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile nav panel -->
+    <div id="mobilePanel" class="md:hidden hidden px-4 pb-4">
+      <nav class="flex flex-col gap-2 text-base">
+        <a href="#program" class="block py-2 px-2 rounded hover:bg-gray-50">О программе</a>
+        <a href="#format" class="block py-2 px-2 rounded hover:bg-gray-50">Формат</a>
+        <a href="#reviews" class="block py-2 px-2 rounded hover:bg-gray-50">Отзывы</a>
+        <a href="#contacts" class="block py-2 px-2 rounded hover:bg-gray-50">Контакты</a>
+        <a href="#contacts" class="mt-2 inline-block text-center py-2 rounded-md text-white bg-[var(--brandBlue,#3B82F6)] w-full" style="background-color:#3B82F6">Записаться</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-16 sm:py-20 lg:py-28">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
+              Научу вашего ребёнка <span class="text-[color:var(--brandBlue,#3B82F6)]">учиться самостоятельно</span>
+            </h1>
+            <p class="mt-6 text-lg sm:text-xl text-gray-600">
+              5 занятий — и ваш ребёнок сам справляется с математикой, программированием и бесплатными онлайн-курсами.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#contacts" class="inline-flex items-center px-5 py-3 rounded-md text-white bg-[var(--brandBlue,#3B82F6)] hover:opacity-95" style="background-color:#3B82F6">
+                Записаться
+              </a>
+              <a href="#program" class="inline-flex items-center px-4 py-3 rounded-md text-[var(--brandBlue,#3B82F6)] ring-1 ring-[var(--brandBlue,#3B82F6)] hover:bg-[var(--brandBlue,#3B82F6)] hover:text-white transition">
+                Узнать программу
+              </a>
+            </div>
+
+            <div class="mt-6 text-sm text-gray-500">
+              Пакет: <strong class="text-gray-800">[цена]</strong> · Формат: онлайн / офлайн · 5 занятий
+            </div>
+          </div>
+
+          <div class="flex justify-center lg:justify-end">
+            <div class="w-full max-w-md rounded-xl overflow-hidden shadow-lg ring-1 ring-gray-100">
+              <img src="https://picsum.photos/seed/hero/800/560" alt="Hero image" class="w-full object-cover h-64 sm:h-72 lg:h-80">
+              <div class="p-4 bg-white">
+                <div class="text-sm text-gray-600">Программа помогает ребенку:</div>
+                <ul class="mt-3 grid grid-cols-1 gap-2 text-sm text-gray-700">
+                  <li>Найти мотивацию и систему занятий</li>
+                  <li>Освоить базовую математику и логику</li>
+                  <li>Понять основы программирования и ИИ-инструментов</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAM -->
+    <section id="program" class="bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 py-16 sm:py-20">
+        <div class="text-center">
+          <h2 class="text-2xl font-bold">О программе</h2>
+          <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Короткая интенсив-программа из 5 занятий, которая научит ребёнка учиться самостоятельно, даёт инструменты для изучения математики, основ программирования и эффективного использования бесплатных онлайн-ресурсов и нейросетей.</p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- advantage 1 -->
+          <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-4">
+            <div class="flex-shrink-0">
+              <!-- icon -->
+              <div class="w-12 h-12 rounded-md bg-[var(--brandBlue,#3B82F6)]/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-[var(--brandBlue,#3B82F6)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422A12 12 0 0112 21.5 12 12 0 015.84 10.578L12 14z" />
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h3 class="font-semibold">Самостоятельность</h3>
+              <p class="mt-2 text-sm text-gray-600">Ребёнок учится планировать и доводить задачи до результата без постоянной помощи.</p>
+            </div>
+          </div>
+
+          <!-- advantage 2 -->
+          <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-12 h-12 rounded-md bg-[var(--brandGreen,#10B981)]/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-[var(--brandGreen,#10B981)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h3 class="font-semibold">Практичность</h3>
+              <p class="mt-2 text-sm text-gray-600">Каждое занятие — набор практических навыков и проверяемых результатов.</p>
+            </div>
+          </div>
+
+          <!-- advantage 3 -->
+          <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-12 h-12 rounded-md bg-[var(--brandBlue,#3B82F6)]/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-[var(--brandBlue,#3B82F6)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16h6" />
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h3 class="font-semibold">Работа с нейросетями</h3>
+              <p class="mt-2 text-sm text-gray-600">Учимся эффективно использовать бесплатные ИИ-инструменты для учёбы и проектов.</p>
+            </div>
+          </div>
+
+          <!-- advantage 4 -->
+          <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-12 h-12 rounded-md bg-[var(--brandGreen,#10B981)]/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-[var(--brandGreen,#10B981)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18" />
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h3 class="font-semibold">Гибкий формат</h3>
+              <p class="mt-2 text-sm text-gray-600">Онлайн и офлайн варианты, домашние задания и чек-листы для родителей.</p>
+            </div>
+          </div>
+
+          <!-- advantage 5 -->
+          <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-12 h-12 rounded-md bg-[var(--brandBlue,#3B82F6)]/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-[var(--brandBlue,#3B82F6)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h3 class="font-semibold">Результат за 5 занятий</h3>
+              <p class="mt-2 text-sm text-gray-600">Чёткая структура и измеримые прогресс-маркеры после каждого занятия.</p>
+            </div>
+          </div>
+
+          <!-- advantage 6 -->
+          <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-12 h-12 rounded-md bg-[var(--brandGreen,#10B981)]/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-[var(--brandGreen,#10B981)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6" />
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h3 class="font-semibold">Поддержка родителей</h3>
+              <p class="mt-2 text-sm text-gray-600">Рекомендации, шаблоны и обратная связь после каждого занятия.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMAT: 5 lessons -->
+    <section id="format" class="bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-16 sm:py-20">
+        <div class="text-center">
+          <h2 class="text-2xl font-bold">Формат занятий — 5 уроков</h2>
+          <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Каждое занятие — 60 минут, домашнее задание и чек-лист. Ниже — схема уроков.</p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          <!-- Card for each lesson -->
+          <article class="p-5 rounded-xl shadow-sm ring-1 ring-gray-100 bg-white carousel-slide">
+            <h3 class="font-semibold text-lg">Урок 1 — Как учиться</h3>
+            <ul class="mt-3 text-sm text-gray-600 list-disc pl-5 space-y-1">
+              <li>Постановка целей и планирование</li>
+              <li>Техника Pomodoro и режимы занятий</li>
+            </ul>
+          </article>
+
+          <article class="p-5 rounded-xl shadow-sm ring-1 ring-gray-100 bg-white carousel-slide">
+            <h3 class="font-semibold text-lg">Урок 2 — Математика</h3>
+            <ul class="mt-3 text-sm text-gray-600 list-disc pl-5 space-y-1">
+              <li>Базовые концепции и тренировки</li>
+              <li>Как разбирать ошибку и учиться на ней</li>
+            </ul>
+          </article>
+
+          <article class="p-5 rounded-xl shadow-sm ring-1 ring-gray-100 bg-white carousel-slide">
+            <h3 class="font-semibold text-lg">Урок 3 — Логика и алгоритмы</h3>
+            <ul class="mt-3 text-sm text-gray-600 list-disc pl-5 space-y-1">
+              <li>Проблемное мышление и простые алгоритмы</li>
+              <li>Игры и задачи для развития</li>
+            </ul>
+          </article>
+
+          <article class="p-5 rounded-xl shadow-sm ring-1 ring-gray-100 bg-white carousel-slide">
+            <h3 class="font-semibold text-lg">Урок 4 — Программирование</h3>
+            <ul class="mt-3 text-sm text-gray-600 list-disc pl-5 space-y-1">
+              <li>Основы программирования (визуальные/питон-введение)</li>
+              <li>Мини-проекты и отладка</li>
+            </ul>
+          </article>
+
+          <article class="p-5 rounded-xl shadow-sm ring-1 ring-gray-100 bg-white carousel-slide">
+            <h3 class="font-semibold text-lg">Урок 5 — Нейросети и курсы</h3>
+            <ul class="mt-3 text-sm text-gray-600 list-disc pl-5 space-y-1">
+              <li>Как пользоваться нейросетями безопасно и продуктивно</li>
+              <li>Где искать бесплатные курсы и как их проходить</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS (carousel) -->
+    <section id="reviews" class="bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 py-16 sm:py-20">
+        <div class="text-center">
+          <h2 class="text-2xl font-bold">Отзывы</h2>
+          <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Реальные истории прогресса — несколько отзывов от родителей.</p>
+        </div>
+
+        <div class="mt-8 relative">
+          <!-- carousel container -->
+          <div id="carousel" class="overflow-hidden rounded-xl">
+            <div id="slides" class="flex transition-transform duration-500" style="width:300%;">
+              <!-- slide 1 -->
+              <div class="min-w-full p-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-6 items-center">
+                  <img class="w-24 h-24 rounded-full object-cover flex-shrink-0" src="https://picsum.photos/seed/rev1/120/120" alt="Фото отзыва 1">
+                  <div>
+                    <div class="font-semibold">Анна, мама 12-летнего Артура</div>
+                    <div class="mt-2 text-gray-600">«После курса ребёнок стал сам готовиться к урокам и спокойно решает домашние задания. Особенно помогли методы планирования и работа с ошибками.»</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- slide 2 -->
+              <div class="min-w-full p-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-6 items-center">
+                  <img class="w-24 h-24 rounded-full object-cover flex-shrink-0" src="https://picsum.photos/seed/rev2/120/120" alt="Фото отзыва 2">
+                  <div>
+                    <div class="font-semibold">Игорь, отец 14-летней Светы</div>
+                    <div class="mt-2 text-gray-600">«Хорошая структура занятий и понятные домашки — дочка заинтересовалась программированием и сделала первый мини-проект.»</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- slide 3 -->
+              <div class="min-w-full p-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-6 items-center">
+                  <img class="w-24 h-24 rounded-full object-cover flex-shrink-0" src="https://picsum.photos/seed/rev3/120/120" alt="Фото отзыва 3">
+                  <div>
+                    <div class="font-semibold">Екатерина, мама 10-летнего Тимура</div>
+                    <div class="mt-2 text-gray-600">«Очень практично. Нейросети объяснили так, что ребёнок начал использовать их для проектов и пояснений сложных тем.»</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- controls -->
+          <div class="absolute inset-y-0 left-2 flex items-center">
+            <button id="prevBtn" class="p-2 rounded-full bg-white shadow ring-1 ring-gray-200" aria-label="Previous">&larr;</button>
+          </div>
+          <div class="absolute inset-y-0 right-2 flex items-center">
+            <button id="nextBtn" class="p-2 rounded-full bg-white shadow ring-1 ring-gray-200" aria-label="Next">&rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <div class="rounded-2xl p-8 sm:p-12 bg-gradient-to-r from-[rgba(59,130,246,0.06)] to-[rgba(16,185,129,0.04)] ring-1 ring-gray-100 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 class="text-xl font-semibold">Готовы попробовать?</h3>
+            <p class="mt-1 text-gray-600">Запишитесь на пробное занятие — познакомимся и составим план обучения для ребёнка.</p>
+          </div>
+          <div class="flex gap-3">
+            <a href="#contacts" class="inline-flex items-center px-5 py-3 rounded-md text-white bg-[var(--brandGreen,#10B981)] hover:opacity-95" style="background-color:#10B981">Записаться на пробное</a>
+            <a href="#contacts" class="inline-flex items-center px-5 py-3 rounded-md text-[var(--brandBlue,#3B82F6)] ring-1 ring-[var(--brandBlue,#3B82F6)]">Контакты</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTS / FORM -->
+    <section id="contacts" class="bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 py-16 sm:py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div>
+            <h2 class="text-2xl font-bold">Контакты</h2>
+            <p class="mt-2 text-gray-600">Пишите или звоните: <strong class="text-gray-800">[телефон / e-mail / мессенджер]</strong></p>
+
+            <div class="mt-6 space-y-4 text-sm text-gray-700">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-md bg-white flex items-center justify-center ring-1 ring-gray-100">
+                  <svg class="w-5 h-5 text-[var(--brandBlue,#3B82F6)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7-5 7 5v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-medium">Формат занятий</div>
+                  <div class="text-gray-600">Онлайн / офлайн — индивидуально.</div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-md bg-white flex items-center justify-center ring-1 ring-gray-100">
+                  <svg class="w-5 h-5 text-[var(--brandGreen,#10B981)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16h6" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-medium">Продолжительность</div>
+                  <div class="text-gray-600">5 занятий по 60 минут + чек-листы и домашнее задание.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 text-sm text-gray-500">
+              Укажите удобное время, и я свяжусь для согласования даты пробного занятия.
+            </div>
+          </div>
+
+          <div>
+            <form id="contactForm" class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100" novalidate>
+              <input type="hidden" name="package" value="[цена]">
+              <label class="block text-sm font-medium text-gray-700">Имя</label>
+              <input id="name" name="name" required class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:ring-2 focus:ring-[var(--brandBlue,#3B82F6)]" placeholder="Иван Иванов">
+
+              <label class="block text-sm font-medium text-gray-700 mt-4">E-mail или телефон</label>
+              <input id="contact" name="contact" required class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:ring-2 focus:ring-[var(--brandGreen,#10B981)]" placeholder="[телефон / e-mail]">
+
+              <label class="block text-sm font-medium text-gray-700 mt-4">Сообщение</label>
+              <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" placeholder="Коротко о желаемых целях или вопросах"></textarea>
+
+              <div class="mt-4 flex items-center justify-between gap-3">
+                <button type="submit" class="inline-flex items-center px-4 py-2 rounded-md text-white bg-[var(--brandBlue,#3B82F6)] hover:opacity-95">
+                  Отправить
+                </button>
+                <div id="formNote" class="text-sm text-gray-500">Или свяжитесь в мессенджере: <strong>[телефон / мессенджер]</strong></div>
+              </div>
+
+              <div id="formStatus" class="mt-3 text-sm"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-600 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div>© <span id="year"></span> [Имя]. Все права защищены.</div>
+        <div>Контакты: <strong>[телефон / e-mail / мессенджер]</strong></div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- JS: mobile menu, carousel, form -->
+  <script>
+    // small helpers
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+    // set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    let mobileOpen = false;
+    mobileBtn?.addEventListener('click', () => {
+      mobileOpen = !mobileOpen;
+      mobilePanel.classList.toggle('hidden', !mobileOpen);
+      // rotate icon
+      const menuIcon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>';
+      } else {
+        menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>';
+      }
+    });
+
+    // Reviews carousel
+    (function(){
+      const slidesEl = document.getElementById('slides');
+      const slideCount = slidesEl.children.length;
+      let index = 0;
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      function show(i) {
+        index = (i + slideCount) % slideCount;
+        slidesEl.style.transform = 'translateX(' + (-index * 100) + '%)';
+      }
+
+      prevBtn?.addEventListener('click', () => {
+        show(index - 1);
+        resetAuto();
+      });
+      nextBtn?.addEventListener('click', () => {
+        show(index + 1);
+        resetAuto();
+      });
+
+      // autoplay
+      let autoTimer = setInterval(() => show(index + 1), 5000);
+      function resetAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => show(index + 1), 5000);
+      }
+
+      // accessible swipe (touch)
+      let startX = null;
+      slidesEl.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
+      slidesEl.addEventListener('touchend', (e) => {
+        if (startX == null) return;
+        const diff = startX - (e.changedTouches[0].clientX);
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) show(index + 1); else show(index - 1);
+          resetAuto();
+        }
+        startX = null;
+      });
+
+      // init
+      show(0);
+    })();
+
+    // Simple form validation & "submission"
+    (function(){
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+
+      function isEmail(val) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+      }
+      function isPhone(val) {
+        // permissive phone: digits, spaces, +, -, ()
+        return /^[\d\+\-\s\(\)]{6,}$/.test(val);
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        status.textContent = '';
+        const name = form.name.value.trim();
+        const contact = form.contact.value.trim();
+        const message = form.message.value.trim();
+
+        if (!name) {
+          status.textContent = 'Пожалуйста, укажите имя.';
+          status.className = 'text-sm text-red-600 mt-2';
+          return;
+        }
+        if (!contact) {
+          status.textContent = 'Пожалуйста, укажите e-mail или телефон.';
+          status.className = 'text-sm text-red-600 mt-2';
+          return;
+        }
+        if (!(isEmail(contact) || isPhone(contact))) {
+          status.textContent = 'Укажите корректный e-mail или номер телефона.';
+          status.className = 'text-sm text-red-600 mt-2';
+          return;
+        }
+
+        // Simulate submission (replace with real fetch/XHR to backend)
+        status.textContent = 'Отправка...';
+        status.className = 'text-sm text-gray-600 mt-2';
+
+        // fake async
+        setTimeout(() => {
+          // success
+          status.textContent = 'Спасибо! В ближайшее время с вами свяжутся для согласования пробного занятия.';
+          status.className = 'text-sm text-green-600 mt-2';
+          form.reset();
+        }, 900);
+      });
+    })();
+  </script>
+</body>
+</html>
