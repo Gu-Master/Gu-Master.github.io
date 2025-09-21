@@ -3,10 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Научу вашего ребёнка учиться самостоятельно — [Имя]</title>
+  <title>Школа Гурачевского</title>
   <meta name="description" content="Программа из 5 занятий: самостоятельное обучение, математика, программирование и работа с нейросетями. 5 занятий — и ребёнок научится учиться сам. Запишитесь на пробное занятие.">
+    <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="image/favicon.png">
+  <!-- /Favicon -->
+
+   <!-- Swiper стили -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <!-- Open Graph -->
-  <meta property="og:title" content="Научу вашего ребёнка учиться самостоятельно — [Имя]" />
+  <meta property="og:title" content="Научу вашего ребёнка учиться самостоятельно" />
   <meta property="og:description" content="Программа из 5 занятий: самостоятельное обучение, математика, программирование и работа с нейросетями." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://picsum.photos/seed/og/1200/630" />
@@ -29,6 +36,12 @@
     /* small extra styling for smoother carousel transitions */
     .carousel-slide { transition: transform .45s ease, opacity .45s ease; }
   </style>
+  <style>
+    html {
+      zoom: 1.1;
+      }
+  </style>
+
 </head>
 <body class="antialiased text-gray-800 bg-white">
 
@@ -39,7 +52,7 @@
         <div class="flex items-center gap-3">
           <a href="#" class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-md bg-[url('https://picsum.photos/seed/logo/80/80')] bg-cover bg-center shadow-sm"></div>
-            <span class="font-semibold text-lg">[Имя]</span>
+            <span class="font-semibold text-lg">Школа Гурачевского</span>
           </a>
         </div>
 
@@ -98,23 +111,55 @@
             </div>
 
             <div class="mt-6 text-sm text-gray-500">
-              Пакет: <strong class="text-gray-800">[цена]</strong> · Формат: онлайн / офлайн · 5 занятий
+              Пакет: <strong class="text-gray-800">[5000 руб]</strong> · Формат: онлайн / офлайн · 5 занятий
             </div>
           </div>
 
           <div class="flex justify-center lg:justify-end">
             <div class="w-full max-w-md rounded-xl overflow-hidden shadow-lg ring-1 ring-gray-100">
-              <img src="https://picsum.photos/seed/hero/800/560" alt="Hero image" class="w-full object-cover h-64 sm:h-72 lg:h-80">
-              <div class="p-4 bg-white">
-                <div class="text-sm text-gray-600">Программа помогает ребенку:</div>
-                <ul class="mt-3 grid grid-cols-1 gap-2 text-sm text-gray-700">
-                  <li>Найти мотивацию и систему занятий</li>
-                  <li>Освоить базовую математику и логику</li>
-                  <li>Понять основы программирования и ИИ-инструментов</li>
-                </ul>
+              
+              <!-- Слайдер -->
+              <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                  
+                  <!-- Слайд 1 -->
+                  <div class="swiper-slide">
+                    <img src="https://picsum.photos/seed/hero1/800/560" alt="Hero image" class="w-full object-cover h-64 sm:h-72 lg:h-80">
+                    <div class="p-4 bg-white">
+                      <div class="text-sm text-gray-600">О школе :</div>
+                      <ul class="mt-3 grid grid-cols-1 gap-2 text-sm text-gray-700">
+                        <li>Поможем мотивацию и систему занятий</li>
+                        <li>Освоить базовую математику и логику</li>
+                        <li>Понять основы программирования и ИИ-инструментов</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <!-- Слайд 2 -->
+                  <div class="swiper-slide">
+                    <img src="https://picsum.photos/seed/hero2/800/560" alt="Hero image" class="w-full object-cover h-64 sm:h-72 lg:h-80">
+                    <div class="p-4 bg-white">
+                      <div class="text-sm text-gray-600">Наши преимущества :</div>
+                      <ul class="mt-3 grid grid-cols-1 gap-2 text-sm text-gray-700">
+                        <li>Индивидуальный подход к каждому</li>
+                        <li>Интерактивные материалы и онлайн-занятия</li>
+                        <li>Поддержка родителям</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Кнопки -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Пагинация -->
+                <div class="swiper-pagination"></div>
               </div>
+
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -407,7 +452,7 @@
                 <button type="submit" class="inline-flex items-center px-4 py-2 rounded-md text-white bg-[var(--brandBlue,#3B82F6)] hover:opacity-95">
                   Отправить
                 </button>
-                <div id="formNote" class="text-sm text-gray-500">Или свяжитесь в мессенджере: <strong>[телефон / мессенджер]</strong></div>
+                <div id="formNote" class="text-sm text-gray-500">Или свяжитесь в мессенджере: <strong>[Телеграмм @flaming_moth]</strong></div>
               </div>
 
               <div id="formStatus" class="mt-3 text-sm"></div>
@@ -420,8 +465,8 @@
     <!-- FOOTER -->
     <footer class="bg-white">
       <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-600 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div>© <span id="year"></span> [Имя]. Все права защищены.</div>
-        <div>Контакты: <strong>[телефон / e-mail / мессенджер]</strong></div>
+        <div>© <span id="year"></span> Школа Гурачевского. Все права защищены.</div>
+        <div>Контакты: <strong>[Телеграмм @flaming_moth]</strong></div>
       </div>
     </footer>
   </main>
@@ -547,5 +592,21 @@
       });
     })();
   </script>
+    <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.mySwiper', {
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
+
 </body>
 </html>
