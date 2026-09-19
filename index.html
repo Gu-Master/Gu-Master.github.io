@@ -57,8 +57,8 @@
             <span>Лента времени</span>
           </button>
 
-          <p class="nav-label nav-label-spaced">Управление</p>
-          <button class="nav-item" data-view="admin">
+          <p class="nav-label nav-label-spaced admin-only">Управление</p>
+          <button class="nav-item admin-only" id="admin-nav" data-view="admin">
             <i data-lucide="shield-check"></i>
             <span>Админ-панель</span>
           </button>
@@ -119,10 +119,6 @@
                   <i data-lucide="scan"></i>
                   Вписать в экран
                 </button>
-                <button class="button button-primary" data-open-admin>
-                  <i data-lucide="plus"></i>
-                  Добавить человека
-                </button>
               </div>
             </div>
 
@@ -148,130 +144,84 @@
 
             <div class="tree-canvas" id="tree-canvas">
               <div class="tree-scale" id="tree-scale">
-                <div class="generation-label generation-one">I поколение</div>
-                <div class="generation-label generation-two">II поколение</div>
-                <div class="generation-label generation-three">III поколение</div>
-                <div class="generation-label generation-four">IV поколение</div>
-
-                <svg class="tree-lines" viewBox="0 0 1200 720" preserveAspectRatio="none" aria-hidden="true">
-                  <path d="M304 160 C370 160, 376 160, 430 160"></path>
-                  <path d="M304 220 C370 220, 376 220, 430 220"></path>
-                  <path d="M505 190 L505 278"></path>
-                  <path d="M505 278 C505 310, 380 310, 380 350"></path>
-                  <path d="M505 278 C505 310, 630 310, 630 350"></path>
-                  <path d="M690 190 L690 278"></path>
-                  <path d="M690 278 C690 310, 860 310, 860 350"></path>
-                  <path d="M380 436 L380 540"></path>
-                  <path d="M630 436 L630 540"></path>
-                  <path d="M860 436 L860 540"></path>
-                  <path d="M380 540 C380 566, 250 566, 250 608"></path>
-                  <path d="M380 540 C380 566, 510 566, 510 608"></path>
-                </svg>
-
-                <div class="tree-node node-anna">
-                  <article class="person-node" data-person-id="anna">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&q=80" alt="Анна Беляева" />
-                    <div class="node-copy">
-                      <strong>Анна Беляева</strong>
-                      <span>1928 — 2007</span>
-                    </div>
-                    <i class="node-status passed" title="Память семьи"></i>
-                    <div class="node-tooltip">Учительница, хранительница семейных рецептов</div>
-                  </article>
+                <div class="tree-generation-label">Старшее поколение</div>
+                <div class="tree-level tree-level-older">
+                  <div class="family-couple">
+                    <article class="person-node" data-person-id="anna">
+                      <div class="person-avatar avatar-anna"><span>АБ</span></div>
+                      <div class="node-copy"><strong>Анна Беляева</strong><span>Прабабушка · 1928 — 2007</span></div>
+                      <i class="node-status passed"></i>
+                      <div class="node-tooltip">Учительница, хранительница семейных рецептов</div>
+                    </article>
+                    <span class="couple-link">супруги</span>
+                    <article class="person-node" data-person-id="boris">
+                      <div class="person-avatar avatar-boris"><span>ББ</span></div>
+                      <div class="node-copy"><strong>Борис Беляев</strong><span>Прадедушка · 1924 — 1998</span></div>
+                      <i class="node-status passed"></i>
+                      <div class="node-tooltip">Инженер, прошёл всю войну и вернулся домой</div>
+                    </article>
+                  </div>
                 </div>
+                <div class="tree-branch branch-one"><span></span></div>
 
-                <div class="tree-node node-boris">
-                  <article class="person-node" data-person-id="boris">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80" alt="Борис Беляев" />
-                    <div class="node-copy">
-                      <strong>Борис Беляев</strong>
-                      <span>1924 — 1998</span>
-                    </div>
-                    <i class="node-status passed" title="Память семьи"></i>
-                    <div class="node-tooltip">Инженер, прошёл всю войну и вернулся домой</div>
-                  </article>
+                <div class="tree-generation-label">Среднее поколение</div>
+                <div class="tree-level tree-level-middle">
+                  <div class="family-couple">
+                    <article class="person-node" data-person-id="elena">
+                      <div class="person-avatar avatar-elena"><span>ЕБ</span></div>
+                      <div class="node-copy"><strong>Елена Беляева</strong><span>Бабушка · 1952 — 2021</span></div>
+                      <i class="node-status passed"></i>
+                      <div class="node-tooltip">Врач, собирала всех за одним столом</div>
+                    </article>
+                    <span class="couple-link">супруги</span>
+                    <article class="person-node" data-person-id="viktor">
+                      <div class="person-avatar avatar-viktor"><span>ВБ</span></div>
+                      <div class="node-copy"><strong>Виктор Беляев</strong><span>Дедушка · 1949 — 2014</span></div>
+                      <i class="node-status passed"></i>
+                      <div class="node-tooltip">Военный связист, любил шахматы и дальние дороги</div>
+                    </article>
+                  </div>
                 </div>
+                <div class="tree-branch branch-two"><span></span></div>
 
-                <div class="tree-node node-elena">
-                  <article class="person-node" data-person-id="elena">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80" alt="Елена Беляева" />
-                    <div class="node-copy">
-                      <strong>Елена Беляева</strong>
-                      <span>1952 — 2021</span>
-                    </div>
-                    <i class="node-status passed" title="Память семьи"></i>
-                    <div class="node-tooltip">Врач и человек, который собирал всех за одним столом</div>
-                  </article>
+                <div class="tree-generation-label">Родители</div>
+                <div class="tree-level tree-level-parents">
+                  <div class="family-couple">
+                    <article class="person-node featured" data-person-id="maria">
+                      <div class="person-avatar avatar-maria"><span>МБ</span></div>
+                      <div class="node-copy"><strong>Мария Беляева</strong><span>Мама · 1976 — сейчас</span></div>
+                      <i class="node-status living"></i>
+                      <div class="node-tooltip">Фотограф, автор семейного архива</div>
+                    </article>
+                    <span class="couple-link">супруги</span>
+                    <article class="person-node featured" data-person-id="sergey">
+                      <div class="person-avatar avatar-sergey"><span>СБ</span></div>
+                      <div class="node-copy"><strong>Сергей Беляев</strong><span>Папа · 1974 — сейчас</span></div>
+                      <i class="node-status living"></i>
+                      <div class="node-tooltip">Архитектор, умеет чинить всё на свете</div>
+                    </article>
+                  </div>
                 </div>
+                <div class="tree-branch branch-three"><span></span></div>
 
-                <div class="tree-node node-viktor">
-                  <article class="person-node" data-person-id="viktor">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=160&q=80" alt="Виктор Беляев" />
-                    <div class="node-copy">
-                      <strong>Виктор Беляев</strong>
-                      <span>1949 — 2014</span>
-                    </div>
-                    <i class="node-status passed" title="Память семьи"></i>
-                    <div class="node-tooltip">Военный связист, любил шахматы и дальние дороги</div>
-                  </article>
-                </div>
-
-                <div class="tree-node node-maria">
-                  <article class="person-node featured" data-person-id="maria">
-                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=160&q=80" alt="Мария Беляева" />
-                    <div class="node-copy">
-                      <strong>Мария Беляева</strong>
-                      <span>1976 — сейчас</span>
-                    </div>
-                    <i class="node-status living" title="Живёт сейчас"></i>
-                    <div class="node-tooltip">Фотограф, автор этого семейного архива</div>
-                  </article>
-                </div>
-
-                <div class="tree-node node-sergey">
-                  <article class="person-node" data-person-id="sergey">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80" alt="Сергей Беляев" />
-                    <div class="node-copy">
-                      <strong>Сергей Беляев</strong>
-                      <span>1974 — сейчас</span>
-                    </div>
-                    <i class="node-status living" title="Живёт сейчас"></i>
-                    <div class="node-tooltip">Архитектор, умеет чинить всё на свете</div>
-                  </article>
-                </div>
-
-                <div class="tree-node node-liza">
+                <div class="tree-generation-label">Дети</div>
+                <div class="tree-level tree-level-children">
                   <article class="person-node active-node" data-person-id="liza">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&q=80" alt="Лиза Беляева" />
-                    <div class="node-copy">
-                      <strong>Лиза Беляева</strong>
-                      <span>2002 — сейчас</span>
-                    </div>
-                    <i class="node-status living" title="Живёт сейчас"></i>
-                    <div class="node-tooltip">Дизайнер, собирает семейные истории в одном месте</div>
+                    <div class="person-avatar avatar-liza"><span>ЛБ</span></div>
+                    <div class="node-copy"><strong>Лиза Беляева</strong><span>Дочь · 2002 — сейчас</span></div>
+                    <i class="node-status living"></i>
+                    <div class="node-tooltip">Дизайнер, собирает семейные истории</div>
                   </article>
-                </div>
-
-                <div class="tree-node node-ivan">
                   <article class="person-node" data-person-id="ivan">
-                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&q=80" alt="Иван Беляев" />
-                    <div class="node-copy">
-                      <strong>Иван Беляев</strong>
-                      <span>2005 — сейчас</span>
-                    </div>
-                    <i class="node-status living" title="Живёт сейчас"></i>
+                    <div class="person-avatar avatar-ivan"><span>ИБ</span></div>
+                    <div class="node-copy"><strong>Иван Беляев</strong><span>Сын · 2005 — сейчас</span></div>
+                    <i class="node-status living"></i>
                     <div class="node-tooltip">Студент, главный семейный шутник</div>
                   </article>
-                </div>
-
-                <div class="tree-node node-sofia">
                   <article class="person-node" data-person-id="sofia">
-                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=160&q=80" alt="София Беляева" />
-                    <div class="node-copy">
-                      <strong>София Беляева</strong>
-                      <span>2008 — сейчас</span>
-                    </div>
-                    <i class="node-status living" title="Живёт сейчас"></i>
+                    <div class="person-avatar avatar-sofia"><span>СБ</span></div>
+                    <div class="node-copy"><strong>София Беляева</strong><span>Дочь · 2008 — сейчас</span></div>
+                    <i class="node-status living"></i>
                     <div class="node-tooltip">Музыкант и самая младшая в ветви</div>
                   </article>
                 </div>
@@ -310,10 +260,6 @@
                 <h2>Все люди</h2>
                 <p class="heading-copy">Каждая карточка ведёт к отдельной семейной истории.</p>
               </div>
-              <button class="button button-primary" data-open-admin>
-                <i data-lucide="user-plus"></i>
-                Добавить человека
-              </button>
             </div>
             <div class="people-filters">
               <div class="filter-search">
@@ -336,10 +282,6 @@
                 <h2>Семейный альбом</h2>
                 <p class="heading-copy">Маленькие кадры, которые удерживают большие истории.</p>
               </div>
-              <button class="button button-primary" data-open-admin>
-                <i data-lucide="image-plus"></i>
-                Добавить фото
-              </button>
             </div>
             <div class="album-toolbar">
               <div class="album-years" id="album-years"></div>
