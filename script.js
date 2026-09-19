@@ -219,6 +219,14 @@ function getInitials(name) {
   return name.split(" ").slice(0, 2).map((part) => part[0]).join("");
 }
 
+function avatarMarkup(person, className = "") {
+  const initials = getInitials(person.name);
+  const image = person.photo && !person.photo.startsWith("data:")
+    ? ` style="background-image:url('${escapeHtml(person.photo)}')"`
+    : "";
+  return `<div class="person-avatar ${className}"${image}><span>${escapeHtml(initials)}</span></div>`;
+}
+
 function notify(message) {
   dom.toastMessage.textContent = message;
   dom.toast.classList.remove("hidden");
@@ -260,7 +268,7 @@ function renderPeople() {
     ? filtered.map((person) => `
       <article class="person-card" data-person-id="${escapeHtml(person.id)}">
         <div class="person-card-top">
-          <img class="person-card-avatar" src="${escapeHtml(person.photo)}" alt="${escapeHtml(person.name)}" />
+          ${avatarMarkup(person, "person-card-avatar")}
           <div class="person-card-copy">
             <h3>${escapeHtml(person.name)}</h3>
             <p>${escapeHtml(person.years)} · ${escapeHtml(person.role)}</p>
@@ -340,7 +348,7 @@ function renderAdminPeople() {
     <tr>
       <td>
         <div class="admin-person-cell">
-          <img src="${escapeHtml(person.photo)}" alt="${escapeHtml(person.name)}" />
+          ${avatarMarkup(person)}
           <div><strong>${escapeHtml(person.name)}</strong><span>${escapeHtml(person.role)}</span></div>
         </div>
       </td>
@@ -387,7 +395,7 @@ function openProfile(id) {
   const relatedPhotos = state.album.filter((item) => item.people.includes(person.id)).slice(0, 3);
   dom.profileModalContent.innerHTML = `
     <div class="profile-hero">
-      <img src="${escapeHtml(person.photo)}" alt="${escapeHtml(person.name)}" />
+      ${avatarMarkup(person, "profile-avatar")}
       <h3 id="profile-name">${escapeHtml(person.name)}</h3>
       <p>${escapeHtml(person.years)} · ${escapeHtml(person.role)}</p>
       <span class="status-label ${person.status}">${person.status === "living" ? "Живёт сейчас" : "Память семьи"}</span>
@@ -584,8 +592,18 @@ document.addEventListener("keydown", (event) => {
 
 document.querySelector("#top-avatar").addEventListener("click", () => openProfile("liza"));
 
+document.addEventListener("error", (event) => {
+  if (event.target instanceof HTMLImageElement) {
+    event.target.classList.add("image-failed");
+  }
+}, true);
+
 renderPeople();
 renderAlbum();
 renderTimeline();
 renderAdminState();
 refreshIcons();
+
+const adminRoute = new URLSearchParams(window.location.search).get("admin") === "1";
+document.body.classList.toggle("admin-route", adminRoute);
+if (adminRoute) showView("admin");
