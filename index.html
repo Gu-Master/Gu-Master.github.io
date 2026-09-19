@@ -1,612 +1,513 @@
 <!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Школа Гурачевского</title>
-  <meta name="description" content="Программа из 5 занятий: самостоятельное обучение, математика, программирование и работа с нейросетями. 5 занятий — и ребёнок научится учиться сам. Запишитесь на пробное занятие.">
-    <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="image/favicon.png">
-  <!-- /Favicon -->
-
-   <!-- Swiper стили -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Научу вашего ребёнка учиться самостоятельно" />
-  <meta property="og:description" content="Программа из 5 занятий: самостоятельное обучение, математика, программирование и работа с нейросетями." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://picsum.photos/seed/og/1200/630" />
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    // configure Tailwind (optional extension)
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brandBlue: '#3B82F6',
-            brandGreen: '#10B981'
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    /* small extra styling for smoother carousel transitions */
-    .carousel-slide { transition: transform .45s ease, opacity .45s ease; }
-  </style>
-  <style>
-    html {
-      zoom: 1.1;
-      }
-  </style>
-
-</head>
-<body class="antialiased text-gray-800 bg-white">
-
-  <!-- HEADER -->
-  <header class="bg-white shadow-sm sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center gap-3">
-          <a href="#" class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-md bg-[url('https://picsum.photos/seed/logo/80/80')] bg-cover bg-center shadow-sm"></div>
-            <span class="font-semibold text-lg">Школа Гурачевского</span>
-          </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f1ea" />
+    <title>РљРѕСЂРЅРё | РЎРµРјРµР№РЅС‹Р№ Р°СЂС…РёРІ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/lucide-static@0.468.0/font/Lucide.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-lockup">
+          <div class="brand-mark"><i data-lucide="sprout"></i></div>
+          <div>
+            <p class="eyebrow">СЃРµРјРµР№РЅС‹Р№ Р°СЂС…РёРІ</p>
+            <h1>РљРѕСЂРЅРё</h1>
+          </div>
         </div>
 
-        <!-- Desktop nav -->
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="#program" class="hover:text-brandBlue">О программе</a>
-          <a href="#format" class="hover:text-brandBlue">Формат</a>
-          <a href="#reviews" class="hover:text-brandBlue">Отзывы</a>
-          <a href="#contacts" class="hover:text-brandBlue">Контакты</a>
-          <a href="#contacts" class="ml-4 inline-flex items-center px-4 py-2 rounded-md text-white bg-[var(--brandBlue,#3B82F6)] hover:opacity-95" style="background-color:#3B82F6">Записаться</a>
+        <div class="family-switcher">
+          <div class="family-avatar">Р‘</div>
+          <div class="family-switcher-copy">
+            <strong>РЎРµРјСЊСЏ Р‘РµР»СЏРµРІС‹С…</strong>
+            <span>РќРѕРІРѕСЃРёР±РёСЂСЃРє В· 4 РїРѕРєРѕР»РµРЅРёСЏ</span>
+          </div>
+          <i data-lucide="chevrons-up-down"></i>
+        </div>
+
+        <nav class="primary-nav" aria-label="РћСЃРЅРѕРІРЅР°СЏ РЅР°РІРёРіР°С†РёСЏ">
+          <p class="nav-label">РђСЂС…РёРІ</p>
+          <button class="nav-item active" data-view="tree">
+            <i data-lucide="git-branch"></i>
+            <span>РЎРµРјРµР№РЅРѕРµ РґСЂРµРІРѕ</span>
+          </button>
+          <button class="nav-item" data-view="people">
+            <i data-lucide="users"></i>
+            <span>Р’СЃРµ Р»СЋРґРё</span>
+            <em id="people-count">9</em>
+          </button>
+          <button class="nav-item" data-view="album">
+            <i data-lucide="images"></i>
+            <span>РЎРµРјРµР№РЅС‹Р№ Р°Р»СЊР±РѕРј</span>
+          </button>
+          <button class="nav-item" data-view="timeline">
+            <i data-lucide="clock-3"></i>
+            <span>Р›РµРЅС‚Р° РІСЂРµРјРµРЅРё</span>
+          </button>
+
+          <p class="nav-label nav-label-spaced">РЈРїСЂР°РІР»РµРЅРёРµ</p>
+          <button class="nav-item" data-view="admin">
+            <i data-lucide="shield-check"></i>
+            <span>РђРґРјРёРЅ-РїР°РЅРµР»СЊ</span>
+          </button>
         </nav>
 
-        <!-- Mobile menu button -->
-        <div class="md:hidden">
-          <button id="mobileMenuBtn" aria-label="Открыть меню" class="p-2 rounded-md ring-1 ring-gray-200">
-            <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile nav panel -->
-    <div id="mobilePanel" class="md:hidden hidden px-4 pb-4">
-      <nav class="flex flex-col gap-2 text-base">
-        <a href="#program" class="block py-2 px-2 rounded hover:bg-gray-50">О программе</a>
-        <a href="#format" class="block py-2 px-2 rounded hover:bg-gray-50">Формат</a>
-        <a href="#reviews" class="block py-2 px-2 rounded hover:bg-gray-50">Отзывы</a>
-        <a href="#contacts" class="block py-2 px-2 rounded hover:bg-gray-50">Контакты</a>
-        <a href="#contacts" class="mt-2 inline-block text-center py-2 rounded-md text-white bg-[var(--brandBlue,#3B82F6)] w-full" style="background-color:#3B82F6">Записаться</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <main>
-    <section class="bg-white">
-      <div class="max-w-6xl mx-auto px-4 py-16 sm:py-20 lg:py-28">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
-              Научу вашего ребёнка <span class="text-[color:var(--brandBlue,#3B82F6)]">учиться самостоятельно</span>
-            </h1>
-            <p class="mt-6 text-lg sm:text-xl text-gray-600">
-              5 занятий — и ваш ребёнок сам справляется с математикой, программированием и бесплатными онлайн-курсами.
-            </p>
-
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a href="#contacts" class="inline-flex items-center px-5 py-3 rounded-md text-white bg-[var(--brandBlue,#3B82F6)] hover:opacity-95" style="background-color:#3B82F6">
-                Записаться
-              </a>
-              <a href="#program" class="inline-flex items-center px-4 py-3 rounded-md text-[var(--brandBlue,#3B82F6)] ring-1 ring-[var(--brandBlue,#3B82F6)] hover:bg-[var(--brandBlue,#3B82F6)] hover:text-white transition">
-                Узнать программу
-              </a>
-            </div>
-
-            <div class="mt-6 text-sm text-gray-500">
-              Пакет: <strong class="text-gray-800">[5000 руб]</strong> · Формат: онлайн / офлайн · 5 занятий
-            </div>
-          </div>
-
-          <div class="flex justify-center lg:justify-end">
-            <div class="w-full max-w-md rounded-xl overflow-hidden shadow-lg ring-1 ring-gray-100">
-              
-              <!-- Слайдер -->
-              <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                  
-                  <!-- Слайд 1 -->
-                  <div class="swiper-slide">
-                    <img src="https://picsum.photos/seed/hero1/800/560" alt="Hero image" class="w-full object-cover h-64 sm:h-72 lg:h-80">
-                    <div class="p-4 bg-white">
-                      <div class="text-sm text-gray-600">О школе :</div>
-                      <ul class="mt-3 grid grid-cols-1 gap-2 text-sm text-gray-700">
-                        <li>Поможем мотивацию и систему занятий</li>
-                        <li>Освоить базовую математику и логику</li>
-                        <li>Понять основы программирования и ИИ-инструментов</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  <!-- Слайд 2 -->
-                  <div class="swiper-slide">
-                    <img src="https://picsum.photos/seed/hero2/800/560" alt="Hero image" class="w-full object-cover h-64 sm:h-72 lg:h-80">
-                    <div class="p-4 bg-white">
-                      <div class="text-sm text-gray-600">Наши преимущества :</div>
-                      <ul class="mt-3 grid grid-cols-1 gap-2 text-sm text-gray-700">
-                        <li>Индивидуальный подход к каждому</li>
-                        <li>Интерактивные материалы и онлайн-занятия</li>
-                        <li>Поддержка родителям</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                </div>
-
-                <!-- Кнопки -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <!-- Пагинация -->
-                <div class="swiper-pagination"></div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- PROGRAM -->
-    <section id="program" class="bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4 py-16 sm:py-20">
-        <div class="text-center">
-          <h2 class="text-2xl font-bold">О программе</h2>
-          <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Короткая интенсив-программа из 5 занятий, которая научит ребёнка учиться самостоятельно, даёт инструменты для изучения математики, основ программирования и эффективного использования бесплатных онлайн-ресурсов и нейросетей.</p>
-        </div>
-
-        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- advantage 1 -->
-          <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-4">
-            <div class="flex-shrink-0">
-              <!-- icon -->
-              <div class="w-12 h-12 rounded-md bg-[var(--brandBlue,#3B82F6)]/10 flex items-center justify-center">
-                <svg class="w-6 h-6 text-[var(--brandBlue,#3B82F6)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422A12 12 0 0112 21.5 12 12 0 015.84 10.578L12 14z" />
-                </svg>
-              </div>
-            </div>
+        <div class="sidebar-foot">
+          <div class="archive-health">
+            <div class="health-icon"><i data-lucide="cloud-check"></i></div>
             <div>
-              <h3 class="font-semibold">Самостоятельность</h3>
-              <p class="mt-2 text-sm text-gray-600">Ребёнок учится планировать и доводить задачи до результата без постоянной помощи.</p>
+              <strong>РђСЂС…РёРІ СЃРѕС…СЂР°РЅС‘РЅ</strong>
+              <span>РџРѕСЃР»РµРґРЅРµРµ РёР·РјРµРЅРµРЅРёРµ: СЃРµРіРѕРґРЅСЏ</span>
             </div>
           </div>
-
-          <!-- advantage 2 -->
-          <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-4">
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 rounded-md bg-[var(--brandGreen,#10B981)]/10 flex items-center justify-center">
-                <svg class="w-6 h-6 text-[var(--brandGreen,#10B981)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-                </svg>
-              </div>
-            </div>
+          <div class="sidebar-user">
+            <div class="mini-avatar">Р›</div>
             <div>
-              <h3 class="font-semibold">Практичность</h3>
-              <p class="mt-2 text-sm text-gray-600">Каждое занятие — набор практических навыков и проверяемых результатов.</p>
+              <strong>Р›РёР·Р°</strong>
+              <span>РҐСЂР°РЅРёС‚РµР»СЊ Р°СЂС…РёРІР°</span>
             </div>
-          </div>
-
-          <!-- advantage 3 -->
-          <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-4">
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 rounded-md bg-[var(--brandBlue,#3B82F6)]/10 flex items-center justify-center">
-                <svg class="w-6 h-6 text-[var(--brandBlue,#3B82F6)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16h6" />
-                </svg>
-              </div>
-            </div>
-            <div>
-              <h3 class="font-semibold">Работа с нейросетями</h3>
-              <p class="mt-2 text-sm text-gray-600">Учимся эффективно использовать бесплатные ИИ-инструменты для учёбы и проектов.</p>
-            </div>
-          </div>
-
-          <!-- advantage 4 -->
-          <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-4">
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 rounded-md bg-[var(--brandGreen,#10B981)]/10 flex items-center justify-center">
-                <svg class="w-6 h-6 text-[var(--brandGreen,#10B981)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18" />
-                </svg>
-              </div>
-            </div>
-            <div>
-              <h3 class="font-semibold">Гибкий формат</h3>
-              <p class="mt-2 text-sm text-gray-600">Онлайн и офлайн варианты, домашние задания и чек-листы для родителей.</p>
-            </div>
-          </div>
-
-          <!-- advantage 5 -->
-          <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-4">
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 rounded-md bg-[var(--brandBlue,#3B82F6)]/10 flex items-center justify-center">
-                <svg class="w-6 h-6 text-[var(--brandBlue,#3B82F6)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-            </div>
-            <div>
-              <h3 class="font-semibold">Результат за 5 занятий</h3>
-              <p class="mt-2 text-sm text-gray-600">Чёткая структура и измеримые прогресс-маркеры после каждого занятия.</p>
-            </div>
-          </div>
-
-          <!-- advantage 6 -->
-          <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-4">
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 rounded-md bg-[var(--brandGreen,#10B981)]/10 flex items-center justify-center">
-                <svg class="w-6 h-6 text-[var(--brandGreen,#10B981)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6" />
-                </svg>
-              </div>
-            </div>
-            <div>
-              <h3 class="font-semibold">Поддержка родителей</h3>
-              <p class="mt-2 text-sm text-gray-600">Рекомендации, шаблоны и обратная связь после каждого занятия.</p>
-            </div>
+            <button class="icon-button subtle" aria-label="РќР°СЃС‚СЂРѕР№РєРё" title="РќР°СЃС‚СЂРѕР№РєРё">
+              <i data-lucide="settings-2"></i>
+            </button>
           </div>
         </div>
-      </div>
-    </section>
+      </aside>
 
-    <!-- FORMAT: 5 lessons -->
-    <section id="format" class="bg-white">
-      <div class="max-w-6xl mx-auto px-4 py-16 sm:py-20">
-        <div class="text-center">
-          <h2 class="text-2xl font-bold">Формат занятий — 5 уроков</h2>
-          <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Каждое занятие — 60 минут, домашнее задание и чек-лист. Ниже — схема уроков.</p>
-        </div>
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb">
+            <span id="breadcrumb-root">РђСЂС…РёРІ</span>
+            <i data-lucide="chevron-right"></i>
+            <strong id="breadcrumb-current">РЎРµРјРµР№РЅРѕРµ РґСЂРµРІРѕ</strong>
+          </div>
+          <div class="topbar-actions">
+            <label class="search-box">
+              <i data-lucide="search"></i>
+              <input id="global-search" type="search" placeholder="РџРѕРёСЃРє РїРѕ Р°СЂС…РёРІСѓ" autocomplete="off" />
+              <kbd>вЊ K</kbd>
+            </label>
+            <button class="icon-button top-action" title="РЈРІРµРґРѕРјР»РµРЅРёСЏ" aria-label="РЈРІРµРґРѕРјР»РµРЅРёСЏ">
+              <i data-lucide="bell"></i>
+              <span class="notification-dot"></span>
+            </button>
+            <button class="avatar-button" id="top-avatar" title="РћС‚РєСЂС‹С‚СЊ РїСЂРѕС„РёР»СЊ">Р›</button>
+          </div>
+        </header>
 
-        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          <!-- Card for each lesson -->
-          <article class="p-5 rounded-xl shadow-sm ring-1 ring-gray-100 bg-white carousel-slide">
-            <h3 class="font-semibold text-lg">Урок 1 — Как учиться</h3>
-            <ul class="mt-3 text-sm text-gray-600 list-disc pl-5 space-y-1">
-              <li>Постановка целей и планирование</li>
-              <li>Техника Pomodoro и режимы занятий</li>
-            </ul>
-          </article>
-
-          <article class="p-5 rounded-xl shadow-sm ring-1 ring-gray-100 bg-white carousel-slide">
-            <h3 class="font-semibold text-lg">Урок 2 — Математика</h3>
-            <ul class="mt-3 text-sm text-gray-600 list-disc pl-5 space-y-1">
-              <li>Базовые концепции и тренировки</li>
-              <li>Как разбирать ошибку и учиться на ней</li>
-            </ul>
-          </article>
-
-          <article class="p-5 rounded-xl shadow-sm ring-1 ring-gray-100 bg-white carousel-slide">
-            <h3 class="font-semibold text-lg">Урок 3 — Логика и алгоритмы</h3>
-            <ul class="mt-3 text-sm text-gray-600 list-disc pl-5 space-y-1">
-              <li>Проблемное мышление и простые алгоритмы</li>
-              <li>Игры и задачи для развития</li>
-            </ul>
-          </article>
-
-          <article class="p-5 rounded-xl shadow-sm ring-1 ring-gray-100 bg-white carousel-slide">
-            <h3 class="font-semibold text-lg">Урок 4 — Программирование</h3>
-            <ul class="mt-3 text-sm text-gray-600 list-disc pl-5 space-y-1">
-              <li>Основы программирования (визуальные/питон-введение)</li>
-              <li>Мини-проекты и отладка</li>
-            </ul>
-          </article>
-
-          <article class="p-5 rounded-xl shadow-sm ring-1 ring-gray-100 bg-white carousel-slide">
-            <h3 class="font-semibold text-lg">Урок 5 — Нейросети и курсы</h3>
-            <ul class="mt-3 text-sm text-gray-600 list-disc pl-5 space-y-1">
-              <li>Как пользоваться нейросетями безопасно и продуктивно</li>
-              <li>Где искать бесплатные курсы и как их проходить</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- REVIEWS (carousel) -->
-    <section id="reviews" class="bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4 py-16 sm:py-20">
-        <div class="text-center">
-          <h2 class="text-2xl font-bold">Отзывы</h2>
-          <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Реальные истории прогресса — несколько отзывов от родителей.</p>
-        </div>
-
-        <div class="mt-8 relative">
-          <!-- carousel container -->
-          <div id="carousel" class="overflow-hidden rounded-xl">
-            <div id="slides" class="flex transition-transform duration-500" style="width:300%;">
-              <!-- slide 1 -->
-              <div class="min-w-full p-6">
-                <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-6 items-center">
-                  <img class="w-24 h-24 rounded-full object-cover flex-shrink-0" src="https://picsum.photos/seed/rev1/120/120" alt="Фото отзыва 1">
-                  <div>
-                    <div class="font-semibold">Анна, мама 12-летнего Артура</div>
-                    <div class="mt-2 text-gray-600">«После курса ребёнок стал сам готовиться к урокам и спокойно решает домашние задания. Особенно помогли методы планирования и работа с ошибками.»</div>
-                  </div>
-                </div>
+        <div class="page-wrap">
+          <section id="view-tree" class="view-section active-view">
+            <div class="page-heading tree-heading">
+              <div>
+                <p class="section-kicker">РіР»Р°РІРЅР°СЏ РєР°СЂС‚Р° СЃРµРјСЊРё</p>
+                <h2>РЎРµРјРµР№РЅРѕРµ РґСЂРµРІРѕ</h2>
+                <p class="heading-copy">РСЃС‚РѕСЂРёРё Р»СЋРґРµР№, РёР· РєРѕС‚РѕСЂС‹С… СЃР»РѕР¶РёР»Р°СЃСЊ РЅР°С€Р° СЃРµРјСЊСЏ.</p>
               </div>
-
-              <!-- slide 2 -->
-              <div class="min-w-full p-6">
-                <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-6 items-center">
-                  <img class="w-24 h-24 rounded-full object-cover flex-shrink-0" src="https://picsum.photos/seed/rev2/120/120" alt="Фото отзыва 2">
-                  <div>
-                    <div class="font-semibold">Игорь, отец 14-летней Светы</div>
-                    <div class="mt-2 text-gray-600">«Хорошая структура занятий и понятные домашки — дочка заинтересовалась программированием и сделала первый мини-проект.»</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- slide 3 -->
-              <div class="min-w-full p-6">
-                <div class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100 flex gap-6 items-center">
-                  <img class="w-24 h-24 rounded-full object-cover flex-shrink-0" src="https://picsum.photos/seed/rev3/120/120" alt="Фото отзыва 3">
-                  <div>
-                    <div class="font-semibold">Екатерина, мама 10-летнего Тимура</div>
-                    <div class="mt-2 text-gray-600">«Очень практично. Нейросети объяснили так, что ребёнок начал использовать их для проектов и пояснений сложных тем.»</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- controls -->
-          <div class="absolute inset-y-0 left-2 flex items-center">
-            <button id="prevBtn" class="p-2 rounded-full bg-white shadow ring-1 ring-gray-200" aria-label="Previous">&larr;</button>
-          </div>
-          <div class="absolute inset-y-0 right-2 flex items-center">
-            <button id="nextBtn" class="p-2 rounded-full bg-white shadow ring-1 ring-gray-200" aria-label="Next">&rarr;</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="bg-white">
-      <div class="max-w-6xl mx-auto px-4 py-12">
-        <div class="rounded-2xl p-8 sm:p-12 bg-gradient-to-r from-[rgba(59,130,246,0.06)] to-[rgba(16,185,129,0.04)] ring-1 ring-gray-100 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <h3 class="text-xl font-semibold">Готовы попробовать?</h3>
-            <p class="mt-1 text-gray-600">Запишитесь на пробное занятие — познакомимся и составим план обучения для ребёнка.</p>
-          </div>
-          <div class="flex gap-3">
-            <a href="#contacts" class="inline-flex items-center px-5 py-3 rounded-md text-white bg-[var(--brandGreen,#10B981)] hover:opacity-95" style="background-color:#10B981">Записаться на пробное</a>
-            <a href="#contacts" class="inline-flex items-center px-5 py-3 rounded-md text-[var(--brandBlue,#3B82F6)] ring-1 ring-[var(--brandBlue,#3B82F6)]">Контакты</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACTS / FORM -->
-    <section id="contacts" class="bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4 py-16 sm:py-20">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <div>
-            <h2 class="text-2xl font-bold">Контакты</h2>
-            <p class="mt-2 text-gray-600">Пишите или звоните: <strong class="text-gray-800">[телефон / e-mail / мессенджер]</strong></p>
-
-            <div class="mt-6 space-y-4 text-sm text-gray-700">
-              <div class="flex items-start gap-3">
-                <div class="w-10 h-10 rounded-md bg-white flex items-center justify-center ring-1 ring-gray-100">
-                  <svg class="w-5 h-5 text-[var(--brandBlue,#3B82F6)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7-5 7 5v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
-                  </svg>
-                </div>
-                <div>
-                  <div class="font-medium">Формат занятий</div>
-                  <div class="text-gray-600">Онлайн / офлайн — индивидуально.</div>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="w-10 h-10 rounded-md bg-white flex items-center justify-center ring-1 ring-gray-100">
-                  <svg class="w-5 h-5 text-[var(--brandGreen,#10B981)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16h6" />
-                  </svg>
-                </div>
-                <div>
-                  <div class="font-medium">Продолжительность</div>
-                  <div class="text-gray-600">5 занятий по 60 минут + чек-листы и домашнее задание.</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-6 text-sm text-gray-500">
-              Укажите удобное время, и я свяжусь для согласования даты пробного занятия.
-            </div>
-          </div>
-
-          <div>
-            <form id="contactForm" class="bg-white p-6 rounded-lg shadow-sm ring-1 ring-gray-100" novalidate>
-              <input type="hidden" name="package" value="[цена]">
-              <label class="block text-sm font-medium text-gray-700">Имя</label>
-              <input id="name" name="name" required class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:ring-2 focus:ring-[var(--brandBlue,#3B82F6)]" placeholder="Иван Иванов">
-
-              <label class="block text-sm font-medium text-gray-700 mt-4">E-mail или телефон</label>
-              <input id="contact" name="contact" required class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:ring-2 focus:ring-[var(--brandGreen,#10B981)]" placeholder="[телефон / e-mail]">
-
-              <label class="block text-sm font-medium text-gray-700 mt-4">Сообщение</label>
-              <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" placeholder="Коротко о желаемых целях или вопросах"></textarea>
-
-              <div class="mt-4 flex items-center justify-between gap-3">
-                <button type="submit" class="inline-flex items-center px-4 py-2 rounded-md text-white bg-[var(--brandBlue,#3B82F6)] hover:opacity-95">
-                  Отправить
+              <div class="heading-actions">
+                <button class="button button-secondary" id="fit-tree">
+                  <i data-lucide="scan"></i>
+                  Р’РїРёСЃР°С‚СЊ РІ СЌРєСЂР°РЅ
                 </button>
-                <div id="formNote" class="text-sm text-gray-500">Или свяжитесь в мессенджере: <strong>[Телеграмм @flaming_moth]</strong></div>
+                <button class="button button-primary" data-open-admin>
+                  <i data-lucide="plus"></i>
+                  Р”РѕР±Р°РІРёС‚СЊ С‡РµР»РѕРІРµРєР°
+                </button>
               </div>
+            </div>
 
-              <div id="formStatus" class="mt-3 text-sm"></div>
-            </form>
+            <div class="tree-toolbar">
+              <div class="tree-legend">
+                <span><i class="legend-dot living"></i> Р–РёРІС‘С‚ СЃРµР№С‡Р°СЃ</span>
+                <span><i class="legend-dot passed"></i> РџР°РјСЏС‚СЊ СЃРµРјСЊРё</span>
+                <span><i class="legend-line"></i> Р РѕРґСЃС‚РІРµРЅРЅР°СЏ СЃРІСЏР·СЊ</span>
+              </div>
+              <div class="tree-controls">
+                <button class="icon-button control-button" id="zoom-out" title="РЈРјРµРЅСЊС€РёС‚СЊ" aria-label="РЈРјРµРЅСЊС€РёС‚СЊ">
+                  <i data-lucide="minus"></i>
+                </button>
+                <span id="zoom-label">100%</span>
+                <button class="icon-button control-button" id="zoom-in" title="РЈРІРµР»РёС‡РёС‚СЊ" aria-label="РЈРІРµР»РёС‡РёС‚СЊ">
+                  <i data-lucide="plus"></i>
+                </button>
+                <span class="control-divider"></span>
+                <button class="tree-filter active" data-tree-filter="all">Р’СЃРµ РїРѕРєРѕР»РµРЅРёСЏ</button>
+                <button class="tree-filter" data-tree-filter="living">Р–РёРІС‹Рµ</button>
+              </div>
+            </div>
+
+            <div class="tree-canvas" id="tree-canvas">
+              <div class="tree-scale" id="tree-scale">
+                <div class="generation-label generation-one">I РїРѕРєРѕР»РµРЅРёРµ</div>
+                <div class="generation-label generation-two">II РїРѕРєРѕР»РµРЅРёРµ</div>
+                <div class="generation-label generation-three">III РїРѕРєРѕР»РµРЅРёРµ</div>
+                <div class="generation-label generation-four">IV РїРѕРєРѕР»РµРЅРёРµ</div>
+
+                <svg class="tree-lines" viewBox="0 0 1200 720" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M304 160 C370 160, 376 160, 430 160"></path>
+                  <path d="M304 220 C370 220, 376 220, 430 220"></path>
+                  <path d="M505 190 L505 278"></path>
+                  <path d="M505 278 C505 310, 380 310, 380 350"></path>
+                  <path d="M505 278 C505 310, 630 310, 630 350"></path>
+                  <path d="M690 190 L690 278"></path>
+                  <path d="M690 278 C690 310, 860 310, 860 350"></path>
+                  <path d="M380 436 L380 540"></path>
+                  <path d="M630 436 L630 540"></path>
+                  <path d="M860 436 L860 540"></path>
+                  <path d="M380 540 C380 566, 250 566, 250 608"></path>
+                  <path d="M380 540 C380 566, 510 566, 510 608"></path>
+                </svg>
+
+                <div class="tree-node node-anna">
+                  <article class="person-node" data-person-id="anna">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&q=80" alt="РђРЅРЅР° Р‘РµР»СЏРµРІР°" />
+                    <div class="node-copy">
+                      <strong>РђРЅРЅР° Р‘РµР»СЏРµРІР°</strong>
+                      <span>1928 вЂ” 2007</span>
+                    </div>
+                    <i class="node-status passed" title="РџР°РјСЏС‚СЊ СЃРµРјСЊРё"></i>
+                    <div class="node-tooltip">РЈС‡РёС‚РµР»СЊРЅРёС†Р°, С…СЂР°РЅРёС‚РµР»СЊРЅРёС†Р° СЃРµРјРµР№РЅС‹С… СЂРµС†РµРїС‚РѕРІ</div>
+                  </article>
+                </div>
+
+                <div class="tree-node node-boris">
+                  <article class="person-node" data-person-id="boris">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80" alt="Р‘РѕСЂРёСЃ Р‘РµР»СЏРµРІ" />
+                    <div class="node-copy">
+                      <strong>Р‘РѕСЂРёСЃ Р‘РµР»СЏРµРІ</strong>
+                      <span>1924 вЂ” 1998</span>
+                    </div>
+                    <i class="node-status passed" title="РџР°РјСЏС‚СЊ СЃРµРјСЊРё"></i>
+                    <div class="node-tooltip">РРЅР¶РµРЅРµСЂ, РїСЂРѕС€С‘Р» РІСЃСЋ РІРѕР№РЅСѓ Рё РІРµСЂРЅСѓР»СЃСЏ РґРѕРјРѕР№</div>
+                  </article>
+                </div>
+
+                <div class="tree-node node-elena">
+                  <article class="person-node" data-person-id="elena">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80" alt="Р•Р»РµРЅР° Р‘РµР»СЏРµРІР°" />
+                    <div class="node-copy">
+                      <strong>Р•Р»РµРЅР° Р‘РµР»СЏРµРІР°</strong>
+                      <span>1952 вЂ” 2021</span>
+                    </div>
+                    <i class="node-status passed" title="РџР°РјСЏС‚СЊ СЃРµРјСЊРё"></i>
+                    <div class="node-tooltip">Р’СЂР°С‡ Рё С‡РµР»РѕРІРµРє, РєРѕС‚РѕСЂС‹Р№ СЃРѕР±РёСЂР°Р» РІСЃРµС… Р·Р° РѕРґРЅРёРј СЃС‚РѕР»РѕРј</div>
+                  </article>
+                </div>
+
+                <div class="tree-node node-viktor">
+                  <article class="person-node" data-person-id="viktor">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=160&q=80" alt="Р’РёРєС‚РѕСЂ Р‘РµР»СЏРµРІ" />
+                    <div class="node-copy">
+                      <strong>Р’РёРєС‚РѕСЂ Р‘РµР»СЏРµРІ</strong>
+                      <span>1949 вЂ” 2014</span>
+                    </div>
+                    <i class="node-status passed" title="РџР°РјСЏС‚СЊ СЃРµРјСЊРё"></i>
+                    <div class="node-tooltip">Р’РѕРµРЅРЅС‹Р№ СЃРІСЏР·РёСЃС‚, Р»СЋР±РёР» С€Р°С…РјР°С‚С‹ Рё РґР°Р»СЊРЅРёРµ РґРѕСЂРѕРіРё</div>
+                  </article>
+                </div>
+
+                <div class="tree-node node-maria">
+                  <article class="person-node featured" data-person-id="maria">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=160&q=80" alt="РњР°СЂРёСЏ Р‘РµР»СЏРµРІР°" />
+                    <div class="node-copy">
+                      <strong>РњР°СЂРёСЏ Р‘РµР»СЏРµРІР°</strong>
+                      <span>1976 вЂ” СЃРµР№С‡Р°СЃ</span>
+                    </div>
+                    <i class="node-status living" title="Р–РёРІС‘С‚ СЃРµР№С‡Р°СЃ"></i>
+                    <div class="node-tooltip">Р¤РѕС‚РѕРіСЂР°С„, Р°РІС‚РѕСЂ СЌС‚РѕРіРѕ СЃРµРјРµР№РЅРѕРіРѕ Р°СЂС…РёРІР°</div>
+                  </article>
+                </div>
+
+                <div class="tree-node node-sergey">
+                  <article class="person-node" data-person-id="sergey">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80" alt="РЎРµСЂРіРµР№ Р‘РµР»СЏРµРІ" />
+                    <div class="node-copy">
+                      <strong>РЎРµСЂРіРµР№ Р‘РµР»СЏРµРІ</strong>
+                      <span>1974 вЂ” СЃРµР№С‡Р°СЃ</span>
+                    </div>
+                    <i class="node-status living" title="Р–РёРІС‘С‚ СЃРµР№С‡Р°СЃ"></i>
+                    <div class="node-tooltip">РђСЂС…РёС‚РµРєС‚РѕСЂ, СѓРјРµРµС‚ С‡РёРЅРёС‚СЊ РІСЃС‘ РЅР° СЃРІРµС‚Рµ</div>
+                  </article>
+                </div>
+
+                <div class="tree-node node-liza">
+                  <article class="person-node active-node" data-person-id="liza">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&q=80" alt="Р›РёР·Р° Р‘РµР»СЏРµРІР°" />
+                    <div class="node-copy">
+                      <strong>Р›РёР·Р° Р‘РµР»СЏРµРІР°</strong>
+                      <span>2002 вЂ” СЃРµР№С‡Р°СЃ</span>
+                    </div>
+                    <i class="node-status living" title="Р–РёРІС‘С‚ СЃРµР№С‡Р°СЃ"></i>
+                    <div class="node-tooltip">Р”РёР·Р°Р№РЅРµСЂ, СЃРѕР±РёСЂР°РµС‚ СЃРµРјРµР№РЅС‹Рµ РёСЃС‚РѕСЂРёРё РІ РѕРґРЅРѕРј РјРµСЃС‚Рµ</div>
+                  </article>
+                </div>
+
+                <div class="tree-node node-ivan">
+                  <article class="person-node" data-person-id="ivan">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&q=80" alt="РРІР°РЅ Р‘РµР»СЏРµРІ" />
+                    <div class="node-copy">
+                      <strong>РРІР°РЅ Р‘РµР»СЏРµРІ</strong>
+                      <span>2005 вЂ” СЃРµР№С‡Р°СЃ</span>
+                    </div>
+                    <i class="node-status living" title="Р–РёРІС‘С‚ СЃРµР№С‡Р°СЃ"></i>
+                    <div class="node-tooltip">РЎС‚СѓРґРµРЅС‚, РіР»Р°РІРЅС‹Р№ СЃРµРјРµР№РЅС‹Р№ С€СѓС‚РЅРёРє</div>
+                  </article>
+                </div>
+
+                <div class="tree-node node-sofia">
+                  <article class="person-node" data-person-id="sofia">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=160&q=80" alt="РЎРѕС„РёСЏ Р‘РµР»СЏРµРІР°" />
+                    <div class="node-copy">
+                      <strong>РЎРѕС„РёСЏ Р‘РµР»СЏРµРІР°</strong>
+                      <span>2008 вЂ” СЃРµР№С‡Р°СЃ</span>
+                    </div>
+                    <i class="node-status living" title="Р–РёРІС‘С‚ СЃРµР№С‡Р°СЃ"></i>
+                    <div class="node-tooltip">РњСѓР·С‹РєР°РЅС‚ Рё СЃР°РјР°СЏ РјР»Р°РґС€Р°СЏ РІ РІРµС‚РІРё</div>
+                  </article>
+                </div>
+              </div>
+              <div class="tree-empty-state hidden" id="tree-empty-state">
+                <i data-lucide="search-x"></i>
+                <strong>Р’ СЌС‚РѕРј РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРё РїРѕРєР° РїСѓСЃС‚Рѕ</strong>
+                <span>РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ РёР»Рё РґРѕР±Р°РІРёС‚СЊ С‡РµР»РѕРІРµРєР°.</span>
+              </div>
+            </div>
+
+            <div class="tree-footer">
+              <div class="tree-stat">
+                <span class="stat-number">4</span>
+                <span>РїРѕРєРѕР»РµРЅРёСЏ<br />СЃРІСЏР·Р°РЅС‹</span>
+              </div>
+              <div class="tree-stat">
+                <span class="stat-number" id="tree-people-total">9</span>
+                <span>С‡РµР»РѕРІРµРє<br />РІ Р°СЂС…РёРІРµ</span>
+              </div>
+              <div class="tree-stat">
+                <span class="stat-number">97</span>
+                <span>Р»РµС‚<br />РёСЃС‚РѕСЂРёРё</span>
+              </div>
+              <div class="tree-footer-note">
+                <i data-lucide="mouse-pointer-2"></i>
+                РќР°РІРµРґРёС‚Рµ РЅР° С‡РµР»РѕРІРµРєР°, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РєРѕСЂРѕС‚РєСѓСЋ РёСЃС‚РѕСЂРёСЋ
+              </div>
+            </div>
+          </section>
+
+          <section id="view-people" class="view-section">
+            <div class="page-heading">
+              <div>
+                <p class="section-kicker">Р»СЋРґРё Р°СЂС…РёРІР°</p>
+                <h2>Р’СЃРµ Р»СЋРґРё</h2>
+                <p class="heading-copy">РљР°Р¶РґР°СЏ РєР°СЂС‚РѕС‡РєР° РІРµРґС‘С‚ Рє РѕС‚РґРµР»СЊРЅРѕР№ СЃРµРјРµР№РЅРѕР№ РёСЃС‚РѕСЂРёРё.</p>
+              </div>
+              <button class="button button-primary" data-open-admin>
+                <i data-lucide="user-plus"></i>
+                Р”РѕР±Р°РІРёС‚СЊ С‡РµР»РѕРІРµРєР°
+              </button>
+            </div>
+            <div class="people-filters">
+              <div class="filter-search">
+                <i data-lucide="search"></i>
+                <input id="people-search" type="search" placeholder="РќР°Р№С‚Рё РїРѕ РёРјРµРЅРё РёР»Рё РѕРїРёСЃР°РЅРёСЋ" />
+              </div>
+              <div class="segmented-control">
+                <button class="segment active" data-people-filter="all">Р’СЃРµ <span data-people-total>9</span></button>
+                <button class="segment" data-people-filter="living">Р–РёРІС‹Рµ <span data-people-living>5</span></button>
+                <button class="segment" data-people-filter="memory">РџР°РјСЏС‚СЊ <span data-people-memory>4</span></button>
+              </div>
+            </div>
+            <div class="people-grid" id="people-grid"></div>
+          </section>
+
+          <section id="view-album" class="view-section">
+            <div class="page-heading">
+              <div>
+                <p class="section-kicker">С„РѕС‚РѕРіСЂР°С„РёРё Рё РјРѕРјРµРЅС‚С‹</p>
+                <h2>РЎРµРјРµР№РЅС‹Р№ Р°Р»СЊР±РѕРј</h2>
+                <p class="heading-copy">РњР°Р»РµРЅСЊРєРёРµ РєР°РґСЂС‹, РєРѕС‚РѕСЂС‹Рµ СѓРґРµСЂР¶РёРІР°СЋС‚ Р±РѕР»СЊС€РёРµ РёСЃС‚РѕСЂРёРё.</p>
+              </div>
+              <button class="button button-primary" data-open-admin>
+                <i data-lucide="image-plus"></i>
+                Р”РѕР±Р°РІРёС‚СЊ С„РѕС‚Рѕ
+              </button>
+            </div>
+            <div class="album-toolbar">
+              <div class="album-years" id="album-years"></div>
+              <button class="filter-chip" id="album-person-filter">
+                <i data-lucide="sliders-horizontal"></i>
+                Р’СЃРµ Р»СЋРґРё
+                <i data-lucide="chevron-down"></i>
+              </button>
+            </div>
+            <div class="album-grid" id="album-grid"></div>
+          </section>
+
+          <section id="view-timeline" class="view-section">
+            <div class="page-heading">
+              <div>
+                <p class="section-kicker">РєР°Рє РІСЃС‘ РїСЂРѕРёСЃС…РѕРґРёР»Рѕ</p>
+                <h2>Р›РµРЅС‚Р° РІСЂРµРјРµРЅРё</h2>
+                <p class="heading-copy">Р“Р»Р°РІРЅС‹Рµ РґР°С‚С‹ Рё СЃРѕР±С‹С‚РёСЏ, СЃРѕР±СЂР°РЅРЅС‹Рµ РІ РѕРґРЅСѓ СЃРїРѕРєРѕР№РЅСѓСЋ Р»РёРЅРёСЋ.</p>
+              </div>
+            </div>
+            <div class="timeline-layout">
+              <div class="timeline-intro">
+                <div class="timeline-intro-mark"><i data-lucide="history"></i></div>
+                <strong>97 Р»РµС‚<br />СЃРµРјРµР№РЅРѕР№ РїР°РјСЏС‚Рё</strong>
+                <span>РѕС‚ РїРµСЂРІРѕР№ С„РѕС‚РѕРіСЂР°С„РёРё<br />РґРѕ СЃРµРіРѕРґРЅСЏС€РЅРµРіРѕ РґРЅСЏ</span>
+              </div>
+              <div class="timeline" id="timeline-list"></div>
+            </div>
+          </section>
+
+          <section id="view-admin" class="view-section">
+            <div class="page-heading">
+              <div>
+                <p class="section-kicker">С‚РѕР»СЊРєРѕ РґР»СЏ С…СЂР°РЅРёС‚РµР»РµР№</p>
+                <h2>РђРґРјРёРЅ-РїР°РЅРµР»СЊ</h2>
+                <p class="heading-copy">РћР±РЅРѕРІР»СЏР№С‚Рµ Р»СЋРґРµР№, РёСЃС‚РѕСЂРёРё Рё С„РѕС‚РѕРіСЂР°С„РёРё СЃРµРјРµР№РЅРѕРіРѕ Р°СЂС…РёРІР°.</p>
+              </div>
+            </div>
+            <div id="admin-locked" class="admin-locked">
+              <div class="locked-illustration"><i data-lucide="lock-keyhole"></i></div>
+              <h3>РђСЂС…РёРІ Р·Р°РєСЂС‹С‚ РѕС‚ СЃР»СѓС‡Р°Р№РЅС‹С… РїСЂР°РІРѕРє</h3>
+              <p>Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ С…СЂР°РЅРёС‚РµР»СЏ, С‡С‚РѕР±С‹ РґРѕР±Р°РІР»СЏС‚СЊ Р»СЋРґРµР№, С„РѕС‚РѕРіСЂР°С„РёРё Рё РІР°Р¶РЅС‹Рµ РґР°С‚С‹.</p>
+              <button class="button button-primary" id="unlock-admin">
+                <i data-lucide="key-round"></i>
+                Р’РѕР№С‚Рё РєР°Рє С…СЂР°РЅРёС‚РµР»СЊ
+              </button>
+            </div>
+            <div id="admin-content" class="admin-content hidden">
+              <div class="admin-tabs">
+                <button class="admin-tab active" data-admin-tab="people-admin">Р›СЋРґРё</button>
+                <button class="admin-tab" data-admin-tab="album-admin">Р¤РѕС‚РѕРіСЂР°С„РёРё</button>
+                <button class="admin-tab" data-admin-tab="events-admin">РЎРѕР±С‹С‚РёСЏ</button>
+              </div>
+              <div class="admin-panel active" id="people-admin">
+                <div class="admin-panel-heading">
+                  <div>
+                    <h3>Р›СЋРґРё Р°СЂС…РёРІР°</h3>
+                    <p>Р”РѕР±Р°РІР»СЏР№С‚Рµ РїСЂРѕС„РёР»Рё Рё РїРѕРґРґРµСЂР¶РёРІР°Р№С‚Рµ СЃРІСЏР·Рё РјРµР¶РґСѓ РїРѕРєРѕР»РµРЅРёСЏРјРё.</p>
+                  </div>
+                  <button class="button button-primary" id="new-person">
+                    <i data-lucide="plus"></i>
+                    РќРѕРІС‹Р№ С‡РµР»РѕРІРµРє
+                  </button>
+                </div>
+                <div class="admin-table-wrap">
+                  <table class="admin-table">
+                    <thead>
+                      <tr><th>Р§РµР»РѕРІРµРє</th><th>Р“РѕРґС‹</th><th>РЎС‚Р°С‚СѓСЃ</th><th>РР·РјРµРЅРµРЅРѕ</th><th></th></tr>
+                    </thead>
+                    <tbody id="admin-people-list"></tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="admin-panel" id="album-admin">
+                <div class="admin-panel-heading">
+                  <div>
+                    <h3>РЎРЅРёРјРєРё Р°Р»СЊР±РѕРјР°</h3>
+                    <p>Р—Р°РіСЂСѓР¶Р°Р№С‚Рµ С„РѕС‚РѕРіСЂР°С„РёРё Рё СЃРІСЏР·С‹РІР°Р№С‚Рµ РёС… СЃ Р»СЋРґСЊРјРё Рё РіРѕРґР°РјРё.</p>
+                  </div>
+                  <button class="button button-primary" id="new-photo">
+                    <i data-lucide="image-plus"></i>
+                    Р”РѕР±Р°РІРёС‚СЊ С„РѕС‚Рѕ
+                  </button>
+                </div>
+                <div class="admin-photo-list" id="admin-photo-list"></div>
+              </div>
+              <div class="admin-panel" id="events-admin">
+                <div class="empty-admin-panel">
+                  <i data-lucide="calendar-plus"></i>
+                  <h3>РЎРѕР±С‹С‚РёСЏ РїРѕСЏРІСЏС‚СЃСЏ Р·РґРµСЃСЊ</h3>
+                  <p>Р’ СЃР»РµРґСѓСЋС‰РµРј С€Р°РіРµ РґРѕР±Р°РІРёРј РѕС‚РґРµР»СЊРЅС‹Р№ СЂРµРґР°РєС‚РѕСЂ РїР°РјСЏС‚РЅС‹С… РґР°С‚ Рё СЃРµРјРµР№РЅС‹С… РёСЃС‚РѕСЂРёР№.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal-backdrop hidden" id="profile-modal">
+      <div class="profile-modal modal-surface" role="dialog" aria-modal="true" aria-labelledby="profile-name">
+        <button class="modal-close icon-button" data-close-modal aria-label="Р—Р°РєСЂС‹С‚СЊ" title="Р—Р°РєСЂС‹С‚СЊ">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="profile-modal-content" id="profile-modal-content"></div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop hidden" id="password-modal">
+      <div class="small-modal modal-surface" role="dialog" aria-modal="true" aria-labelledby="password-title">
+        <button class="modal-close icon-button" data-close-modal aria-label="Р—Р°РєСЂС‹С‚СЊ" title="Р—Р°РєСЂС‹С‚СЊ">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="modal-icon"><i data-lucide="shield-check"></i></div>
+        <p class="section-kicker">РґРѕСЃС‚СѓРї С…СЂР°РЅРёС‚РµР»СЏ</p>
+        <h3 id="password-title">РћС‚РєСЂС‹С‚СЊ Р°РґРјРёРЅ-РїР°РЅРµР»СЊ</h3>
+        <p>Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ, С‡С‚РѕР±С‹ РІРЅРѕСЃРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ СЃРµРјРµР№РЅС‹Р№ Р°СЂС…РёРІ.</p>
+        <form id="password-form">
+          <label class="field-label" for="admin-password">РџР°СЂРѕР»СЊ</label>
+          <div class="password-input">
+            <i data-lucide="key-round"></i>
+            <input id="admin-password" type="password" placeholder="Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ" autocomplete="current-password" />
+          </div>
+          <p class="form-error hidden" id="password-error">РџР°СЂРѕР»СЊ РЅРµ РїРѕРґРѕС€С‘Р». РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·.</p>
+          <button class="button button-primary button-wide" type="submit">Р’РѕР№С‚Рё РІ Р°СЂС…РёРІ</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-backdrop hidden" id="editor-modal">
+      <div class="editor-modal modal-surface" role="dialog" aria-modal="true" aria-labelledby="editor-title">
+        <button class="modal-close icon-button" data-close-modal aria-label="Р—Р°РєСЂС‹С‚СЊ" title="Р—Р°РєСЂС‹С‚СЊ">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="editor-heading">
+          <div class="modal-icon"><i data-lucide="user-round-pen"></i></div>
+          <div>
+            <p class="section-kicker">СЂРµРґР°РєС‚РѕСЂ Р°СЂС…РёРІР°</p>
+            <h3 id="editor-title">Р”РѕР±Р°РІРёС‚СЊ С‡РµР»РѕРІРµРєР°</h3>
           </div>
         </div>
+        <form id="person-form" class="editor-form">
+          <input type="hidden" id="person-id" />
+          <div class="form-grid two-columns">
+            <label class="field-label">РРјСЏ Рё С„Р°РјРёР»РёСЏ<input id="person-name" required placeholder="РќР°РїСЂРёРјРµСЂ, РќРёРєРѕР»Р°Р№ Р‘РµР»СЏРµРІ" /></label>
+            <label class="field-label">Р“РѕРґС‹ Р¶РёР·РЅРё<input id="person-years" required placeholder="1940 вЂ” СЃРµР№С‡Р°СЃ" /></label>
+          </div>
+          <div class="form-grid two-columns">
+            <label class="field-label">Р РѕР»СЊ РІ СЃРµРјСЊРµ<input id="person-role" placeholder="РќР°РїСЂРёРјРµСЂ, РґРµРґСѓС€РєР°" /></label>
+            <label class="field-label">РЎС‚Р°С‚СѓСЃ<select id="person-status"><option value="living">Р–РёРІС‘С‚ СЃРµР№С‡Р°СЃ</option><option value="passed">РџР°РјСЏС‚СЊ СЃРµРјСЊРё</option></select></label>
+          </div>
+          <label class="field-label">РљРѕСЂРѕС‚РєРѕРµ РѕРїРёСЃР°РЅРёРµ<textarea id="person-description" rows="3" placeholder="РќРµСЃРєРѕР»СЊРєРѕ СЃР»РѕРІ, РєРѕС‚РѕСЂС‹Рµ С…РѕС‡РµС‚СЃСЏ СЃРѕС…СЂР°РЅРёС‚СЊ..."></textarea></label>
+          <label class="field-label">РЎСЃС‹Р»РєР° РЅР° С„РѕС‚РѕРіСЂР°С„РёСЋ<input id="person-photo" type="url" placeholder="https://..." /></label>
+          <label class="field-label">Р—Р°РіСЂСѓР·РёС‚СЊ С„РѕС‚Рѕ СЃ СѓСЃС‚СЂРѕР№СЃС‚РІР°<input id="person-photo-file" type="file" accept="image/*" /></label>
+          <div class="form-actions">
+            <button class="button button-secondary" type="button" data-close-modal>РћС‚РјРµРЅР°</button>
+            <button class="button button-primary" type="submit"><i data-lucide="save"></i>РЎРѕС…СЂР°РЅРёС‚СЊ РїСЂРѕС„РёР»СЊ</button>
+          </div>
+        </form>
       </div>
-    </section>
+    </div>
 
-    <!-- FOOTER -->
-    <footer class="bg-white">
-      <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-600 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div>© <span id="year"></span> Школа Гурачевского. Все права защищены.</div>
-        <div>Контакты: <strong>[Телеграмм @flaming_moth]</strong></div>
-      </div>
-    </footer>
-  </main>
+    <div class="toast hidden" id="toast">
+      <i data-lucide="check-circle-2"></i>
+      <span id="toast-message">РР·РјРµРЅРµРЅРёСЏ СЃРѕС…СЂР°РЅРµРЅС‹</span>
+    </div>
 
-  <!-- JS: mobile menu, carousel, form -->
-  <script>
-    // small helpers
-    const $ = (sel, root=document) => root.querySelector(sel);
-    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
-
-    // set current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile menu toggle
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const mobilePanel = document.getElementById('mobilePanel');
-    let mobileOpen = false;
-    mobileBtn?.addEventListener('click', () => {
-      mobileOpen = !mobileOpen;
-      mobilePanel.classList.toggle('hidden', !mobileOpen);
-      // rotate icon
-      const menuIcon = document.getElementById('menuIcon');
-      if (mobileOpen) {
-        menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>';
-      } else {
-        menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>';
-      }
-    });
-
-    // Reviews carousel
-    (function(){
-      const slidesEl = document.getElementById('slides');
-      const slideCount = slidesEl.children.length;
-      let index = 0;
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-
-      function show(i) {
-        index = (i + slideCount) % slideCount;
-        slidesEl.style.transform = 'translateX(' + (-index * 100) + '%)';
-      }
-
-      prevBtn?.addEventListener('click', () => {
-        show(index - 1);
-        resetAuto();
-      });
-      nextBtn?.addEventListener('click', () => {
-        show(index + 1);
-        resetAuto();
-      });
-
-      // autoplay
-      let autoTimer = setInterval(() => show(index + 1), 5000);
-      function resetAuto() {
-        clearInterval(autoTimer);
-        autoTimer = setInterval(() => show(index + 1), 5000);
-      }
-
-      // accessible swipe (touch)
-      let startX = null;
-      slidesEl.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
-      slidesEl.addEventListener('touchend', (e) => {
-        if (startX == null) return;
-        const diff = startX - (e.changedTouches[0].clientX);
-        if (Math.abs(diff) > 40) {
-          if (diff > 0) show(index + 1); else show(index - 1);
-          resetAuto();
-        }
-        startX = null;
-      });
-
-      // init
-      show(0);
-    })();
-
-    // Simple form validation & "submission"
-    (function(){
-      const form = document.getElementById('contactForm');
-      const status = document.getElementById('formStatus');
-
-      function isEmail(val) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
-      }
-      function isPhone(val) {
-        // permissive phone: digits, spaces, +, -, ()
-        return /^[\d\+\-\s\(\)]{6,}$/.test(val);
-      }
-
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        status.textContent = '';
-        const name = form.name.value.trim();
-        const contact = form.contact.value.trim();
-        const message = form.message.value.trim();
-
-        if (!name) {
-          status.textContent = 'Пожалуйста, укажите имя.';
-          status.className = 'text-sm text-red-600 mt-2';
-          return;
-        }
-        if (!contact) {
-          status.textContent = 'Пожалуйста, укажите e-mail или телефон.';
-          status.className = 'text-sm text-red-600 mt-2';
-          return;
-        }
-        if (!(isEmail(contact) || isPhone(contact))) {
-          status.textContent = 'Укажите корректный e-mail или номер телефона.';
-          status.className = 'text-sm text-red-600 mt-2';
-          return;
-        }
-
-        // Simulate submission (replace with real fetch/XHR to backend)
-        status.textContent = 'Отправка...';
-        status.className = 'text-sm text-gray-600 mt-2';
-
-        // fake async
-        setTimeout(() => {
-          // success
-          status.textContent = 'Спасибо! В ближайшее время с вами свяжутся для согласования пробного занятия.';
-          status.className = 'text-sm text-green-600 mt-2';
-          form.reset();
-        }, 900);
-      });
-    })();
-  </script>
-    <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    const swiper = new Swiper('.mySwiper', {
-      loop: true,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-    });
-  </script>
-
-</body>
+    <script src="https://unpkg.com/lucide@0.468.0"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
