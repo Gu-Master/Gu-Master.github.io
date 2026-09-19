@@ -2161,3 +2161,339 @@ kbd {
     padding-left: 22px;
   }
 }
+
+/* Public archive refresh: larger type, quieter surfaces, and a relationship tree
+   whose connectors live between generations instead of floating beside cards. */
+.admin-only,
+body:not(.admin-route) #view-admin {
+  display: none !important;
+}
+
+body.admin-route #view-tree,
+body.admin-route #view-people,
+body.admin-route #view-album,
+body.admin-route #view-timeline {
+  display: none !important;
+}
+
+body.admin-route #view-admin {
+  display: block !important;
+}
+
+body {
+  font-size: 15px;
+}
+
+.sidebar {
+  background: #ebe8df;
+}
+
+.nav-item span {
+  font-size: 14px;
+}
+
+.family-switcher-copy strong,
+.sidebar-user strong,
+.archive-health strong {
+  font-size: 13px;
+}
+
+.family-switcher-copy span,
+.sidebar-user span,
+.archive-health span {
+  font-size: 11px;
+}
+
+.search-box input,
+.filter-search input,
+.button {
+  font-size: 14px;
+}
+
+.page-heading h2 {
+  font-size: clamp(36px, 4vw, 52px);
+}
+
+.heading-copy {
+  font-size: 15px;
+}
+
+.tree-legend {
+  font-size: 13px;
+}
+
+.tree-filter,
+#zoom-label {
+  font-size: 12px;
+}
+
+.tree-canvas {
+  min-height: 770px;
+  overflow: auto;
+  border: 1px solid #d9d5ca;
+  border-radius: 10px;
+  background: #faf9f5;
+}
+
+.tree-canvas::before,
+.tree-canvas::after,
+.tree-lines,
+.generation-label {
+  display: none;
+}
+
+.tree-scale {
+  display: block;
+  width: 1180px;
+  height: auto;
+  min-height: 760px;
+  padding: 32px 42px 46px;
+  transform: scale(1);
+}
+
+.tree-generation-label {
+  margin: 0 auto 12px;
+  color: #7f867e;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.tree-level {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 112px;
+}
+
+.tree-level-children {
+  gap: 20px;
+}
+
+.family-couple {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.couple-link {
+  z-index: 1;
+  display: grid;
+  width: 68px;
+  height: 26px;
+  place-items: center;
+  margin: 0 -1px;
+  border-top: 1px solid #b4bcb4;
+  border-bottom: 1px solid #b4bcb4;
+  color: #778178;
+  background: #f4f4ef;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tree-branch {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 54px;
+}
+
+.tree-branch::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: #b7c2b8;
+  content: "";
+}
+
+.tree-branch span {
+  display: none;
+}
+
+.person-node {
+  width: 300px;
+  min-height: 100px;
+  padding: 15px;
+  border: 1px solid #d9d5ca;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 7px 20px rgba(45, 53, 46, 0.06);
+}
+
+.tree-level-children .person-node {
+  width: 285px;
+}
+
+.person-node:hover,
+.person-node.active-node {
+  border-color: #c77d67;
+  box-shadow: 0 11px 26px rgba(137, 80, 62, 0.12);
+  transform: translateY(-2px);
+}
+
+.person-avatar {
+  display: grid;
+  width: 62px;
+  height: 62px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  color: #23302f;
+  background-color: #dfe5dc;
+  background-position: center;
+  background-size: cover;
+  box-shadow: inset 0 0 0 1px rgba(29, 42, 43, 0.08);
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.person-card-avatar {
+  width: 52px;
+  height: 52px;
+  font-size: 14px;
+}
+
+.admin-person-cell .person-avatar {
+  width: 38px;
+  height: 38px;
+  font-size: 11px;
+}
+
+.profile-avatar {
+  width: 142px;
+  height: 142px;
+  margin-bottom: 18px;
+  border: 5px solid rgba(255, 255, 255, 0.7);
+  font-size: 30px;
+}
+
+.person-avatar span {
+  padding: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.avatar-anna,
+.avatar-elena,
+.avatar-liza {
+  background-color: #e5d3c8;
+}
+
+.avatar-boris,
+.avatar-viktor,
+.avatar-ivan {
+  background-color: #cedbd7;
+}
+
+.avatar-maria,
+.avatar-sergey,
+.avatar-sofia {
+  background-color: #d9d8ca;
+}
+
+.person-node .node-copy {
+  gap: 6px;
+}
+
+.node-copy strong {
+  font-size: 16px;
+}
+
+.node-copy span {
+  color: #727c75;
+  font-size: 13px;
+}
+
+.node-status {
+  top: 15px;
+  right: 15px;
+  width: 8px;
+  height: 8px;
+}
+
+.node-tooltip {
+  width: 280px;
+  padding: 12px;
+  font-size: 12px;
+}
+
+.tree-footer {
+  padding-top: 22px;
+}
+
+.tree-stat > span:last-child,
+.tree-footer-note {
+  font-size: 12px;
+}
+
+.person-card-copy h3 {
+  font-size: 19px;
+}
+
+.person-card-copy p,
+.person-card-description,
+.status-label,
+.arrow-link {
+  font-size: 13px;
+}
+
+.person-card-description {
+  line-height: 1.5;
+}
+
+.profile-hero h3 {
+  font-size: 28px;
+}
+
+.profile-hero p,
+.profile-bio,
+.profile-moment p {
+  font-size: 14px;
+}
+
+.profile-detail-label,
+.field-label,
+.form-error {
+  font-size: 12px;
+}
+
+.admin-route-note {
+  display: block;
+  margin: 0 0 26px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .tree-scale {
+    width: 740px;
+    min-height: 760px;
+    padding: 26px 18px 40px;
+  }
+
+  .tree-level {
+    justify-content: flex-start;
+  }
+
+  .tree-level-children {
+    justify-content: flex-start;
+  }
+
+  .profile-avatar {
+    width: 112px;
+    height: 112px;
+  }
+
+  .person-node,
+  .tree-level-children .person-node {
+    width: 285px;
+  }
+}
