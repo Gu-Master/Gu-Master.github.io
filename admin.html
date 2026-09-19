@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f1ea" />
+    <title>Вход хранителя | Корни</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .admin-login-page {
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+        padding: 24px;
+        background:
+          radial-gradient(circle at 20% 15%, rgba(185, 100, 76, 0.08), transparent 28%),
+          #f4f1ea;
+      }
+
+      .admin-login {
+        width: min(470px, 100%);
+        padding: 42px;
+        border: 1px solid #d9d5ca;
+        border-radius: 12px;
+        background: #fffdf9;
+        box-shadow: 0 22px 70px rgba(51, 56, 48, 0.11);
+      }
+
+      .admin-login-mark {
+        display: grid;
+        width: 56px;
+        height: 56px;
+        margin-bottom: 24px;
+        place-items: center;
+        border-radius: 50%;
+        color: #9d4d38;
+        background: #f3e1d9;
+      }
+
+      .admin-login-mark svg {
+        width: 25px;
+      }
+
+      .admin-login h1 {
+        margin: 8px 0 10px;
+        color: #1d2a2b;
+        font-family: "Playfair Display", serif;
+        font-size: 34px;
+        font-weight: 600;
+      }
+
+      .admin-login-copy {
+        margin: 0 0 28px;
+        color: #6d7771;
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .admin-login form {
+        display: grid;
+        gap: 10px;
+      }
+
+      .admin-login .button {
+        min-height: 46px;
+        margin-top: 9px;
+      }
+
+      .admin-login-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin-top: 24px;
+        color: #9d4d38;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .admin-login-back svg {
+        width: 16px;
+      }
+
+      .admin-login-error {
+        margin: 0;
+        color: #9d4d38;
+        font-size: 12px;
+      }
+
+      @media (max-width: 520px) {
+        .admin-login {
+          padding: 30px 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="admin-login-page">
+      <section class="admin-login">
+        <div class="admin-login-mark"><i data-lucide="lock-keyhole"></i></div>
+        <p class="section-kicker">закрытая зона</p>
+        <h1>Вход хранителя</h1>
+        <p class="admin-login-copy">
+          Здесь можно редактировать людей, семейные связи и материалы архива.
+          Обычные посетители эту страницу не видят.
+        </p>
+        <form id="admin-login-form">
+          <label class="field-label" for="admin-login-password">Пароль хранителя</label>
+          <div class="password-input">
+            <i data-lucide="key-round"></i>
+            <input id="admin-login-password" type="password" autocomplete="current-password" required placeholder="Введите пароль" />
+          </div>
+          <p class="admin-login-error hidden" id="admin-login-error">Неверный пароль.</p>
+          <button class="button button-primary" type="submit">
+            <i data-lucide="arrow-right"></i>
+            Открыть админ-панель
+          </button>
+        </form>
+        <a class="admin-login-back" href="./">
+          <i data-lucide="arrow-left"></i>
+          Вернуться в семейный архив
+        </a>
+      </section>
+    </main>
+    <script src="https://unpkg.com/lucide@0.468.0"></script>
+    <script>
+      window.lucide.createIcons();
+      document.querySelector("#admin-login-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const password = document.querySelector("#admin-login-password");
+        const error = document.querySelector("#admin-login-error");
+        if (password.value === "family2026") {
+          sessionStorage.setItem("family-admin-unlocked", "true");
+          window.location.href = "./index.html?admin=1";
+          return;
+        }
+        error.classList.remove("hidden");
+        password.select();
+      });
+    </script>
+  </body>
+</html>
