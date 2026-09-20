@@ -1863,6 +1863,28 @@ kbd {
   gap: 12px;
 }
 
+.relationship-box {
+  display: grid;
+  gap: 14px;
+  padding: 15px;
+  border: 1px solid #d9d5ca;
+  border-radius: 8px;
+  background: #fffdf9;
+}
+
+.relationship-box strong {
+  display: block;
+  margin: 6px 0 3px;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.relationship-box span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 .two-columns {
   grid-template-columns: 1fr 1fr;
 }
