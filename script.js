@@ -187,6 +187,9 @@ const dom = {
   profileModalContent: document.querySelector("#profile-modal-content"),
   editorTitle: document.querySelector("#editor-title"),
   personForm: document.querySelector("#person-form"),
+  sidebarAdminTrigger: document.querySelector("#sidebar-admin-trigger"),
+  exitAdmin: document.querySelector("#exit-admin"),
+  adminPreviewTree: document.querySelector("#admin-preview-tree"),
 };
 
 function load(key, fallback) {
@@ -246,6 +249,7 @@ function closeModals() {
 
 function showView(view) {
   state.activeView = view;
+  document.body.classList.toggle("admin-route", view === "admin");
   dom.viewSections.forEach((section) => section.classList.toggle("active-view", section.id === `view-${view}`));
   dom.navItems.forEach((item) => item.classList.toggle("active", item.dataset.view === view));
   dom.breadcrumbCurrent.textContent = pageTitles[view];
@@ -337,10 +341,24 @@ function renderTimeline() {
 function renderAdminState() {
   dom.adminLocked.classList.toggle("hidden", state.adminUnlocked);
   dom.adminContent.classList.toggle("hidden", !state.adminUnlocked);
+  document.body.classList.toggle("is-admin-unlocked", state.adminUnlocked);
   if (state.adminUnlocked) {
     renderAdminPeople();
     renderAdminPhotos();
   }
+}
+
+function requestAdminAccess() {
+  if (state.adminUnlocked) {
+    showView("admin");
+    return;
+  }
+  openModal("#password-modal");
+}
+
+function leaveAdminMode() {
+  document.body.classList.remove("admin-route");
+  showView("tree");
 }
 
 function renderAdminPeople() {
@@ -466,12 +484,14 @@ document.addEventListener("click", (event) => {
 
   if (event.target.matches("[data-close-modal]") || event.target.closest("[data-close-modal]")) closeModals();
   if (event.target.matches("[data-open-admin]") || event.target.closest("[data-open-admin]")) {
-    if (!state.adminUnlocked) openModal("#password-modal");
-    else showView("admin");
+    requestAdminAccess();
   }
 });
 
 document.querySelector("#unlock-admin").addEventListener("click", () => openModal("#password-modal"));
+dom.sidebarAdminTrigger.addEventListener("click", requestAdminAccess);
+dom.exitAdmin.addEventListener("click", leaveAdminMode);
+dom.adminPreviewTree.addEventListener("click", leaveAdminMode);
 
 document.querySelector("#password-form").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -484,6 +504,7 @@ document.querySelector("#password-form").addEventListener("submit", (event) => {
     error.classList.add("hidden");
     closeModals();
     showView("admin");
+    renderAdminState();
     notify("Админ-панель открыта");
   } else {
     error.classList.remove("hidden");
@@ -605,5 +626,4 @@ renderAdminState();
 refreshIcons();
 
 const adminRoute = new URLSearchParams(window.location.search).get("admin") === "1";
-document.body.classList.toggle("admin-route", adminRoute);
-if (adminRoute) showView("admin");
+if (adminRoute) requestAdminAccess();
