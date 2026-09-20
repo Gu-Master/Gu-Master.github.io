@@ -334,6 +334,32 @@
               </button>
             </div>
             <div id="admin-content" class="admin-content hidden">
+              <div class="database-panel">
+                <div>
+                  <p class="section-kicker">база данных</p>
+                  <h3>Supabase синхронизация</h3>
+                  <p id="database-status">База не подключена. Пока правки сохраняются только в этом браузере.</p>
+                </div>
+                <div class="database-grid">
+                  <label class="field-label">Project URL<input id="supabase-url" type="url" placeholder="https://xxxx.supabase.co" /></label>
+                  <label class="field-label">Anon key<input id="supabase-anon-key" placeholder="eyJhbGciOi..." /></label>
+                  <label class="field-label">Пароль записи<input id="supabase-admin-password" type="password" placeholder="Пароль из SQL-настройки" /></label>
+                </div>
+                <div class="database-actions">
+                  <button class="button button-secondary" id="connect-database" type="button">
+                    <i data-lucide="plug"></i>
+                    Подключить
+                  </button>
+                  <button class="button button-secondary" id="load-database" type="button">
+                    <i data-lucide="download-cloud"></i>
+                    Загрузить из базы
+                  </button>
+                  <button class="button button-primary" id="save-database" type="button">
+                    <i data-lucide="upload-cloud"></i>
+                    Сохранить в базу
+                  </button>
+                </div>
+              </div>
               <div class="admin-preview-panel">
                 <div>
                   <p class="section-kicker">превью древа</p>
@@ -502,6 +528,7 @@
       <span id="toast-message">Изменения сохранены</span>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://unpkg.com/lucide@0.468.0"></script>
     <script src="script.js"></script>
   </body>
