@@ -445,8 +445,46 @@
             <label class="field-label">Годы жизни<input id="person-years" required placeholder="1940 — сейчас" /></label>
           </div>
           <div class="form-grid two-columns">
-            <label class="field-label">Роль в семье<input id="person-role" placeholder="Например, дедушка" /></label>
+            <label class="field-label">Роль в семье<input id="person-role" list="role-suggestions" placeholder="Например, дедушка, сестра дедушки, двоюродный брат" /></label>
             <label class="field-label">Статус<select id="person-status"><option value="living">Живёт сейчас</option><option value="passed">Память семьи</option></select></label>
+          </div>
+          <datalist id="role-suggestions">
+            <option value="прабабушка"></option>
+            <option value="прадедушка"></option>
+            <option value="бабушка"></option>
+            <option value="дедушка"></option>
+            <option value="мама"></option>
+            <option value="папа"></option>
+            <option value="дочь"></option>
+            <option value="сын"></option>
+            <option value="сестра"></option>
+            <option value="брат"></option>
+            <option value="сестра дедушки"></option>
+            <option value="брат дедушки"></option>
+            <option value="сестра бабушки"></option>
+            <option value="брат бабушки"></option>
+            <option value="тётя"></option>
+            <option value="дядя"></option>
+            <option value="двоюродная сестра"></option>
+            <option value="двоюродный брат"></option>
+          </datalist>
+          <div class="relationship-box">
+            <div>
+              <p class="section-kicker">связь в семье</p>
+              <strong id="relationship-summary">Выберите связь, и роль заполнится аккуратно.</strong>
+              <span id="relationship-helper">Например: «сестра выбранного человека» + «Виктор Беляев» = «сестра дедушки».</span>
+            </div>
+            <div class="form-grid two-columns">
+              <label class="field-label">Кем приходится<select id="person-relation-type">
+                <option value="">Не указывать связь</option>
+                <option value="spouse">супруг / супруга выбранного человека</option>
+                <option value="child">ребёнок выбранного человека</option>
+                <option value="parent">родитель выбранного человека</option>
+                <option value="sibling_female">сестра выбранного человека</option>
+                <option value="sibling_male">брат выбранного человека</option>
+              </select></label>
+              <label class="field-label">Относительно кого<select id="person-relation-target"></select></label>
+            </div>
           </div>
           <label class="field-label">Короткое описание<textarea id="person-description" rows="3" placeholder="Несколько слов, которые хочется сохранить..."></textarea></label>
           <label class="field-label">Ссылка на фотографию<input id="person-photo" type="url" placeholder="https://..." /></label>
