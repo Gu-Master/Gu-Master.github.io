@@ -78,7 +78,7 @@
               <strong>Лиза</strong>
               <span>Хранитель архива</span>
             </div>
-            <button class="icon-button subtle" aria-label="Настройки" title="Настройки">
+            <button class="icon-button subtle" id="sidebar-admin-trigger" aria-label="Войти в админ-панель" title="Войти в админ-панель">
               <i data-lucide="settings-2"></i>
             </button>
           </div>
@@ -319,6 +319,10 @@
                 <h2>Админ-панель</h2>
                 <p class="heading-copy">Обновляйте людей, истории и фотографии семейного архива.</p>
               </div>
+              <button class="button button-secondary" id="exit-admin">
+                <i data-lucide="log-out"></i>
+                Выйти из режима админа
+              </button>
             </div>
             <div id="admin-locked" class="admin-locked">
               <div class="locked-illustration"><i data-lucide="lock-keyhole"></i></div>
@@ -330,6 +334,17 @@
               </button>
             </div>
             <div id="admin-content" class="admin-content hidden">
+              <div class="admin-preview-panel">
+                <div>
+                  <p class="section-kicker">превью древа</p>
+                  <h3>Так дерево выглядит для семьи</h3>
+                  <p>После правок можно сразу перейти к просмотру и проверить карточки людей.</p>
+                </div>
+                <button class="button button-secondary" id="admin-preview-tree">
+                  <i data-lucide="git-branch"></i>
+                  Открыть древо
+                </button>
+              </div>
               <div class="admin-tabs">
                 <button class="admin-tab active" data-admin-tab="people-admin">Люди</button>
                 <button class="admin-tab" data-admin-tab="album-admin">Фотографии</button>
