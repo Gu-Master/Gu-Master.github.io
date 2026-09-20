@@ -156,6 +156,8 @@ const state = {
   treeZoom: 1,
   peopleFilter: "all",
   adminUnlocked: sessionStorage.getItem("family-admin-unlocked") === "true",
+  db: load("family-db-config", { url: "", anonKey: "", adminPassword: "" }),
+  supabase: null,
 };
 
 const roleCorrections = new Map([
@@ -215,6 +217,13 @@ const dom = {
   sidebarAdminTrigger: document.querySelector("#sidebar-admin-trigger"),
   exitAdmin: document.querySelector("#exit-admin"),
   adminPreviewTree: document.querySelector("#admin-preview-tree"),
+  databaseStatus: document.querySelector("#database-status"),
+  supabaseUrl: document.querySelector("#supabase-url"),
+  supabaseAnonKey: document.querySelector("#supabase-anon-key"),
+  supabaseAdminPassword: document.querySelector("#supabase-admin-password"),
+  connectDatabase: document.querySelector("#connect-database"),
+  loadDatabase: document.querySelector("#load-database"),
+  saveDatabase: document.querySelector("#save-database"),
 };
 
 function load(key, fallback) {
@@ -228,6 +237,85 @@ function load(key, fallback) {
 
 function save(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
+}
+
+function archivePayload() {
+  return {
+    people: state.people,
+    album: state.album,
+    timeline: state.timeline,
+    version: 1,
+    savedAt: new Date().toISOString(),
+  };
+}
+
+function applyArchivePayload(payload) {
+  if (!payload || !Array.isArray(payload.people)) return false;
+  state.people = payload.people;
+  state.album = Array.isArray(payload.album) ? payload.album : state.album;
+  state.timeline = Array.isArray(payload.timeline) ? payload.timeline : state.timeline;
+  save("family-people", state.people);
+  save("family-album", state.album);
+  save("family-timeline", state.timeline);
+  renderPeople();
+  renderAlbum();
+  renderTimeline();
+  renderAdminState();
+  return true;
+}
+
+function updateDatabaseStatus(message, isGood = false) {
+  if (!dom.databaseStatus) return;
+  dom.databaseStatus.textContent = message;
+  dom.databaseStatus.classList.toggle("database-ok", isGood);
+}
+
+function initDatabaseClient() {
+  if (!state.db.url || !state.db.anonKey || !window.supabase) {
+    updateDatabaseStatus("База не подключена. Укажите Project URL и anon key из Supabase.");
+    return false;
+  }
+  state.supabase = window.supabase.createClient(state.db.url, state.db.anonKey);
+  updateDatabaseStatus("База подключена. Можно загрузить или сохранить общий архив.", true);
+  return true;
+}
+
+async function loadFromDatabase(silent = false) {
+  if (!state.supabase && !initDatabaseClient()) return false;
+  const { data, error } = await state.supabase.rpc("get_family_archive");
+  if (error) {
+    updateDatabaseStatus(`Ошибка загрузки: ${error.message}`);
+    if (!silent) notify("Не удалось загрузить базу");
+    return false;
+  }
+  if (!data) {
+    updateDatabaseStatus("В базе пока пусто. Нажмите «Сохранить в базу», чтобы создать общий архив.");
+    return false;
+  }
+  applyArchivePayload(data);
+  updateDatabaseStatus("Архив загружен из базы.", true);
+  if (!silent) notify("Архив загружен из базы");
+  return true;
+}
+
+async function saveToDatabase(silent = false) {
+  if (!state.supabase && !initDatabaseClient()) return false;
+  if (!state.db.adminPassword) {
+    updateDatabaseStatus("Введите пароль записи для базы.");
+    return false;
+  }
+  const { error } = await state.supabase.rpc("save_family_archive", {
+    admin_password: state.db.adminPassword,
+    new_payload: archivePayload(),
+  });
+  if (error) {
+    updateDatabaseStatus(`Ошибка сохранения: ${error.message}`);
+    if (!silent) notify("Не удалось сохранить в базу");
+    return false;
+  }
+  updateDatabaseStatus("Изменения сохранены в общую базу.", true);
+  if (!silent) notify("Сохранено в базу");
+  return true;
 }
 
 function escapeHtml(value = "") {
@@ -459,6 +547,11 @@ function renderAdminState() {
     renderAdminPeople();
     renderAdminPhotos();
   }
+  if (dom.supabaseUrl) {
+    dom.supabaseUrl.value = state.db.url || "";
+    dom.supabaseAnonKey.value = state.db.anonKey || "";
+    dom.supabaseAdminPassword.value = state.db.adminPassword || "";
+  }
 }
 
 function requestAdminAccess() {
@@ -677,6 +770,7 @@ document.querySelector("#person-form").addEventListener("submit", async (event) 
   save("family-people", state.people);
   renderPeople();
   renderAdminPeople();
+  saveToDatabase(true);
   closeModals();
   notify(current ? "Профиль обновлён" : "Человек добавлен в архив");
 });
@@ -756,6 +850,25 @@ renderAlbum();
 renderTimeline();
 renderAdminState();
 refreshIcons();
+
+if (dom.connectDatabase) {
+  dom.connectDatabase.addEventListener("click", () => {
+    state.db = {
+      url: dom.supabaseUrl.value.trim(),
+      anonKey: dom.supabaseAnonKey.value.trim(),
+      adminPassword: dom.supabaseAdminPassword.value.trim(),
+    };
+    save("family-db-config", state.db);
+    initDatabaseClient();
+  });
+  dom.loadDatabase.addEventListener("click", () => loadFromDatabase(false));
+  dom.saveDatabase.addEventListener("click", () => saveToDatabase(false));
+}
+
+if (state.db.url && state.db.anonKey) {
+  initDatabaseClient();
+  loadFromDatabase(true);
+}
 
 const adminRoute = new URLSearchParams(window.location.search).get("admin") === "1";
 if (adminRoute) requestAdminAccess();
