@@ -158,6 +158,27 @@ const state = {
   adminUnlocked: sessionStorage.getItem("family-admin-unlocked") === "true",
 };
 
+const roleCorrections = new Map([
+  ["ддедушка", "дедушка"],
+  ["деддушка", "дедушка"],
+  ["дедушкаа", "дедушка"],
+  ["бабущка", "бабушка"],
+  ["бабушкаа", "бабушка"],
+  ["паппа", "папа"],
+  ["ппаа", "папа"],
+  ["мамаа", "мама"],
+  ["прабабущка", "прабабушка"],
+  ["прадеддушка", "прадедушка"],
+  ["систра", "сестра"],
+  ["братт", "брат"],
+  ["тетя", "тётя"],
+  ["тётка", "тётя"],
+  ["дядька", "дядя"],
+]);
+
+const femaleRoles = new Set(["мама", "бабушка", "прабабушка", "дочь", "сестра", "тётя", "двоюродная сестра"]);
+const maleRoles = new Set(["папа", "дедушка", "прадедушка", "сын", "брат", "дядя", "двоюродный брат"]);
+
 const pageTitles = {
   tree: "Семейное древо",
   people: "Все люди",
@@ -187,6 +208,10 @@ const dom = {
   profileModalContent: document.querySelector("#profile-modal-content"),
   editorTitle: document.querySelector("#editor-title"),
   personForm: document.querySelector("#person-form"),
+  relationType: document.querySelector("#person-relation-type"),
+  relationTarget: document.querySelector("#person-relation-target"),
+  relationshipSummary: document.querySelector("#relationship-summary"),
+  relationshipHelper: document.querySelector("#relationship-helper"),
   sidebarAdminTrigger: document.querySelector("#sidebar-admin-trigger"),
   exitAdmin: document.querySelector("#exit-admin"),
   adminPreviewTree: document.querySelector("#admin-preview-tree"),
@@ -216,6 +241,94 @@ function escapeHtml(value = "") {
 
 function personById(id) {
   return state.people.find((person) => person.id === id);
+}
+
+function normalizeRole(value = "") {
+  const compact = value.trim().toLowerCase().replace(/\s+/g, " ");
+  return roleCorrections.get(compact) || compact;
+}
+
+function inferStatusFromYears(years) {
+  const text = years.trim().toLowerCase();
+  if (text.includes("сейчас") || text.includes("жив")) return "living";
+  if (/\d{4}\s*[—-]\s*\d{4}/.test(text)) return "passed";
+  return "";
+}
+
+function childRoleFromParent(parentRole) {
+  if (["мама", "папа"].includes(parentRole)) return "ребёнок";
+  if (["бабушка", "дедушка"].includes(parentRole)) return "мама/папа";
+  if (["прабабушка", "прадедушка"].includes(parentRole)) return "бабушка/дедушка";
+  return "ребёнок";
+}
+
+function parentRoleFromChild(childRole) {
+  if (["дочь", "сын", "ребёнок"].includes(childRole)) return "мама/папа";
+  if (["мама", "папа"].includes(childRole)) return "бабушка/дедушка";
+  if (["бабушка", "дедушка"].includes(childRole)) return "прабабушка/прадедушка";
+  return "родитель";
+}
+
+function spouseRoleFromTarget(targetRole) {
+  if (femaleRoles.has(targetRole)) {
+    if (targetRole === "мама") return "папа";
+    if (targetRole === "бабушка") return "дедушка";
+    if (targetRole === "прабабушка") return "прадедушка";
+    return "супруг";
+  }
+  if (maleRoles.has(targetRole)) {
+    if (targetRole === "папа") return "мама";
+    if (targetRole === "дедушка") return "бабушка";
+    if (targetRole === "прадедушка") return "прабабушка";
+    return "супруга";
+  }
+  return "супруг/супруга";
+}
+
+function relationRole(type, targetRole) {
+  if (!type || !targetRole) return "";
+  if (type === "spouse") return spouseRoleFromTarget(targetRole);
+  if (type === "child") return childRoleFromParent(targetRole);
+  if (type === "parent") return parentRoleFromChild(targetRole);
+  if (type === "sibling_female") return `сестра ${targetRole}`;
+  if (type === "sibling_male") return `брат ${targetRole}`;
+  return "";
+}
+
+function relationLabel(type) {
+  return {
+    spouse: "супруг/супруга",
+    child: "ребёнок",
+    parent: "родитель",
+    sibling_female: "сестра",
+    sibling_male: "брат",
+  }[type] || "";
+}
+
+function populateRelationTargets(currentId = "") {
+  dom.relationTarget.innerHTML = `<option value="">Выберите человека</option>` + state.people
+    .filter((person) => person.id !== currentId)
+    .map((person) => `<option value="${escapeHtml(person.id)}">${escapeHtml(person.name)} — ${escapeHtml(normalizeRole(person.role))}</option>`)
+    .join("");
+}
+
+function updateRelationshipSuggestion() {
+  const target = personById(dom.relationTarget.value);
+  const type = dom.relationType.value;
+  const roleInput = document.querySelector("#person-role");
+  if (!target || !type) {
+    dom.relationshipSummary.textContent = "Выберите связь, и роль заполнится аккуратно.";
+    dom.relationshipHelper.textContent = "Например: «сестра выбранного человека» + «Виктор Беляев» = «сестра дедушки».";
+    return;
+  }
+  const targetRole = normalizeRole(target.role);
+  const suggestedRole = relationRole(type, targetRole);
+  dom.relationshipSummary.textContent = `${relationLabel(type)} для: ${target.name}`;
+  dom.relationshipHelper.textContent = `Автроль: ${suggestedRole}. Можно поправить вручную, если в вашей семье принято иначе.`;
+  if (suggestedRole && (!roleInput.value.trim() || roleInput.dataset.autofilled === "true")) {
+    roleInput.value = suggestedRole;
+    roleInput.dataset.autofilled = "true";
+  }
 }
 
 function getInitials(name) {
@@ -444,6 +557,9 @@ function resetPersonForm() {
   dom.personForm.reset();
   document.querySelector("#person-id").value = "";
   document.querySelector("#person-photo-file").value = "";
+  document.querySelector("#person-role").dataset.autofilled = "false";
+  populateRelationTargets();
+  updateRelationshipSuggestion();
 }
 
 function openPersonEditor(id = "") {
@@ -458,6 +574,9 @@ function openPersonEditor(id = "") {
     document.querySelector("#person-status").value = person.status;
     document.querySelector("#person-description").value = person.description;
     document.querySelector("#person-photo").value = person.photo.startsWith("data:") ? "" : person.photo;
+    populateRelationTargets(person.id);
+  } else {
+    populateRelationTargets();
   }
   openModal("#editor-modal");
 }
@@ -513,6 +632,19 @@ document.querySelector("#password-form").addEventListener("submit", (event) => {
 });
 
 document.querySelector("#new-person").addEventListener("click", () => openPersonEditor());
+document.querySelector("#person-role").addEventListener("input", (event) => {
+  event.target.dataset.autofilled = "false";
+});
+document.querySelector("#person-role").addEventListener("blur", (event) => {
+  const normalized = normalizeRole(event.target.value);
+  if (normalized) event.target.value = normalized;
+});
+document.querySelector("#person-years").addEventListener("blur", (event) => {
+  const status = inferStatusFromYears(event.target.value);
+  if (status) document.querySelector("#person-status").value = status;
+});
+dom.relationType.addEventListener("change", updateRelationshipSuggestion);
+dom.relationTarget.addEventListener("change", updateRelationshipSuggestion);
 document.querySelectorAll("[data-admin-tab]").forEach((tab) => {
   tab.addEventListener("click", () => {
     document.querySelectorAll("[data-admin-tab]").forEach((item) => item.classList.toggle("active", item === tab));
@@ -533,7 +665,7 @@ document.querySelector("#person-form").addEventListener("submit", async (event) 
     id,
     name: document.querySelector("#person-name").value.trim(),
     years: document.querySelector("#person-years").value.trim(),
-    role: document.querySelector("#person-role").value.trim() || "член семьи",
+    role: normalizeRole(document.querySelector("#person-role").value) || "член семьи",
     status: document.querySelector("#person-status").value,
     description: document.querySelector("#person-description").value.trim() || "История этого человека ещё будет дополнена.",
     photo,
