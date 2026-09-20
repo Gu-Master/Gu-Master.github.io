@@ -2535,6 +2535,46 @@ body {
   font-size: 14px;
 }
 
+.database-panel {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 22px;
+  border: 1px solid #d9d5ca;
+  border-radius: 10px;
+  background: #fffdf9;
+}
+
+.database-panel h3 {
+  margin: 6px 0 5px;
+  color: var(--ink);
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.database-panel p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.database-panel .database-ok {
+  color: #3d6d4d;
+}
+
+.database-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1.1fr 0.8fr;
+  gap: 12px;
+}
+
+.database-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 #sidebar-admin-trigger {
   color: var(--terracotta-deep);
   background: rgba(185, 100, 76, 0.1);
@@ -2572,6 +2612,20 @@ body {
   .admin-preview-panel {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .database-panel {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .database-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .database-actions {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }
 
