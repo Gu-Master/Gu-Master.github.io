@@ -2164,7 +2164,6 @@ kbd {
 
 /* Public archive refresh: larger type, quieter surfaces, and a relationship tree
    whose connectors live between generations instead of floating beside cards. */
-.admin-only,
 body:not(.admin-route) #view-admin {
   display: none !important;
 }
@@ -2177,6 +2176,22 @@ body.admin-route #view-timeline {
 }
 
 body.admin-route #view-admin {
+  display: block !important;
+}
+
+.admin-only {
+  display: none !important;
+}
+
+body.is-admin-unlocked .admin-only {
+  display: flex !important;
+}
+
+.nav-label.admin-only {
+  display: none !important;
+}
+
+body.is-admin-unlocked .nav-label.admin-only {
   display: block !important;
 }
 
@@ -2472,6 +2487,41 @@ body {
   font-size: 14px;
 }
 
+.admin-preview-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 22px;
+  border: 1px solid #d9d5ca;
+  border-radius: 10px;
+  background: #fffdf9;
+}
+
+.admin-preview-panel h3 {
+  margin: 6px 0 5px;
+  color: var(--ink);
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.admin-preview-panel p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+#sidebar-admin-trigger {
+  color: var(--terracotta-deep);
+  background: rgba(185, 100, 76, 0.1);
+}
+
+#sidebar-admin-trigger:hover {
+  background: rgba(185, 100, 76, 0.18);
+}
+
 @media (max-width: 640px) {
   .tree-scale {
     width: 740px;
@@ -2495,5 +2545,10 @@ body {
   .person-node,
   .tree-level-children .person-node {
     width: 285px;
+  }
+
+  .admin-preview-panel {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
